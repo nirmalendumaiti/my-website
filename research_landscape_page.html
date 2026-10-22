@@ -1,0 +1,4234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Research Landscape | Nirmalendu Maiti</title>
+<script src="https://cdn.tailwindcss.com"></script>
+
+
+    <!-- Google Fonts -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Lora:ital,wght@0,400;0,500;1,400&family=Plus Jakarta Sans:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+
+    <!-- Leaflet CSS for Map -->
+
+    <link rel="stylesheet"
+          href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+
+    <style>
+
+        :root {
+
+            --nav-bg: #132219;
+
+            --paper-bg: #f6f1e9;
+
+            --paper-card: #fcf9f4;
+
+            --paper-card-hover: #ffffff;
+
+            --ink-primary: #192e23;
+
+            --ink-light: #2c4738;
+
+            --text-main: #423d36;
+
+            --text-muted: #6e675d;
+
+            --gold-accent: #ab823e;
+
+            --gold-light: rgba(171, 130, 62, 0.22);
+
+            --gold-subtle: rgba(171, 130, 62, 0.1);
+
+            --border-subtle: rgba(65, 55, 40, 0.12);
+
+            --font-heading: 'Cormorant Garamond', serif;
+
+            --font-body: 'Lora', serif;
+
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+        }
+
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+
+        html {
+
+            scroll-behavior: smooth;
+
+        }
+
+
+        body {
+
+            background-color: var(--paper-bg);
+
+            color: var(--text-main);
+
+            font-family: var(--font-body);
+
+            line-height: 1.6;
+
+            background-image:
+
+                radial-gradient(
+                    circle at 10% 20%,
+                    rgba(255, 255, 255, 0.65) 0%,
+                    transparent 40%
+                ),
+
+                radial-gradient(
+                    circle at 90% 80%,
+                    rgba(225, 215, 198, 0.35) 0%,
+                    transparent 50%
+                );
+
+            background-attachment: fixed;
+
+            -webkit-font-smoothing: antialiased;
+
+            position: relative;
+
+        }
+
+
+        /* SVG Paper Grain Texture */
+
+        .paper-grain-overlay {
+
+            position: fixed;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100vw;
+
+            height: 100vh;
+
+            pointer-events: none;
+
+            z-index: 9999;
+
+            opacity: 0.035;
+
+        }
+
+
+        /* ================================================= */
+        /* NAVBAR — MATCHING INDEX / ABOUT */
+        /* ================================================= */
+
+        .navbar {
+
+            background-color: transparent;
+
+            color: var(--ink-primary);
+
+            padding: 24px 48px 16px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            position: absolute;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            z-index: 1000;
+
+        }
+
+
+        .nav-brand {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+        }
+
+
+        .nav-brand > a {
+
+            text-decoration: none;
+
+        }
+
+
+        .nav-brand .brand-icon {
+
+    width: 36px;
+
+    height: 36px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(28, 53, 45, 0.30);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    text-decoration: none;
+
+    color: rgba(28, 53, 45, 0.90);
+
+    transition: border-color 0.25s ease;
+
+}
+
+
+.nav-brand .brand-icon:hover {
+
+    border-color: var(--gold-accent);
+
+}
+
+
+.nav-brand .brand-icon svg {
+
+    width: 16px;
+
+    height: 16px;
+
+    color: var(--gold-accent);
+
+}
+
+        .nav-brand:hover .brand-icon {
+
+            border-color: var(--gold-accent);
+
+        }
+
+
+        .nav-brand .brand-icon svg {
+
+            width: 18px;
+
+            height: 18px;
+
+            color: var(--gold-accent);
+
+        }
+
+
+        .nav-brand-text {
+
+            display: flex;
+
+            flex-direction: column;
+
+        }
+
+
+        .nav-brand .title {
+
+    font-family: var(--font-heading);
+
+    font-size: 1.5rem;
+
+    font-weight: 500;
+
+    letter-spacing: 0.02em;
+
+    color: var(--ink-primary);
+
+    text-decoration: none;
+
+    line-height: 1;
+
+    white-space: nowrap;
+
+    transition: color 0.25s ease;
+
+}
+
+        .nav-brand:hover .title {
+
+            color: var(--gold-accent);
+
+        }
+
+
+        .nav-brand .subtitle {
+
+            font-family: var(--font-sans);
+
+            font-size: 0.62rem;
+
+            font-style: normal;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.18em;
+
+            color: rgba(25, 46, 35, 0.58);
+
+            margin-top: 5px;
+
+            white-space: nowrap;
+
+            transition: color 0.25s ease;
+
+        }
+
+
+        .nav-brand:hover .subtitle {
+
+            color: rgba(171, 130, 62, 0.80);
+
+        }
+
+
+        .nav-links {
+
+            display: flex;
+
+            gap: 28px;
+
+            list-style: none;
+
+            align-items: center;
+
+        }
+
+
+        .nav-links a {
+
+            color: var(--ink-primary);
+
+            text-decoration: none;
+
+            font-family: var(--font-sans);
+
+            font-size: 0.85rem;
+
+            font-weight: 500;
+
+            letter-spacing: 0.02em;
+
+            transition:
+
+                color 0.25s ease,
+
+                border-color 0.25s ease;
+
+            padding-bottom: 4px;
+
+            border-bottom: 2px solid transparent;
+
+        }
+
+
+        .nav-links a:hover,
+
+        .nav-links a.active {
+
+            color: var(--gold-accent);
+
+            border-bottom: 2px solid var(--gold-accent);
+
+        }
+
+
+        .nav-toggle {
+
+            display: none;
+
+            background: none;
+
+            border: none;
+
+            color: var(--ink-primary);
+
+            font-size: 1.5rem;
+
+            cursor: pointer;
+
+        }
+
+
+        /* ================================================= */
+        /* HERO */
+        /* ================================================= */
+
+        .hero {
+
+            position: relative;
+
+            width: 100%;
+
+            height: 380px;
+
+            overflow: hidden;
+
+            border-bottom: 1px solid var(--border-subtle);
+
+            background-color: var(--nav-bg);
+
+        }
+
+
+        .hero-banner-img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            object-position: center 35%;
+
+            filter: brightness(0.92) contrast(1.05);
+
+        }
+
+
+        .hero-overlay {
+
+            position: absolute;
+
+            inset: 0;
+
+            background: linear-gradient(
+                90deg,
+                rgba(246, 241, 233, 0.95) 0%,
+                rgba(246, 241, 233, 0.85) 48%,
+                rgba(246, 241, 233, 0.2) 100%
+            );
+
+            display: flex;
+
+            align-items: center;
+
+            padding: 0 6%;
+
+        }
+
+
+        .hero-content {
+
+            max-width: 620px;
+
+        }
+
+
+        .hero-content h1 {
+
+            font-family: var(--font-heading);
+
+            font-size: 4rem;
+
+            font-weight: 500;
+
+            line-height: 1.05;
+
+            color: var(--ink-primary);
+
+            letter-spacing: -0.02em;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .hero-content p {
+
+            font-family: var(--font-body);
+
+            font-style: italic;
+
+            font-size: 1.15rem;
+
+            color: var(--text-main);
+
+            margin-bottom: 20px;
+
+            line-height: 1.5;
+
+        }
+
+
+        .hero-divider {
+
+            width: 64px;
+
+            height: 2.5px;
+
+            background-color: var(--gold-accent);
+
+        }
+
+
+        /* ================================================= */
+        /* EVERYTHING BELOW THIS POINT REMAINS AS IN ORIGINAL */
+        /* ================================================= */
+
+        .dashboard-container {
+            max-width: 1680px;
+            margin: -35px auto 60px;
+            padding: 0 24px;
+            position: relative;
+            z-index: 10;
+        }
+
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1.25fr 1.15fr 1fr 1.1fr;
+            gap: 20px;
+            align-items: stretch;
+        }
+
+
+        .card {
+            background-color: var(--paper-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 24px 22px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+        }
+
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 32px rgba(0, 0, 0, 0.06);
+            background-color: var(--paper-card-hover);
+        }
+
+
+        .card-title {
+            font-family: var(--font-sans);
+            font-size: 0.82rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--ink-primary);
+            margin-bottom: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+
+        .card-title .action-link {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            text-transform: none;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+
+        .card-title .action-link:hover {
+            color: var(--gold-accent);
+        }
+
+
+        .diagram-wrapper {
+            position: relative;
+            width: 100%;
+            height: 340px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: auto 0;
+        }
+
+
+        .radial-svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+
+
+        .node-circle {
+            transition: transform 0.3s ease, filter 0.3s ease;
+            cursor: pointer;
+        }
+
+
+        .node-circle:hover {
+            transform: scale(1.1);
+            filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.18));
+        }
+
+
+        .node-circle.active circle {
+            stroke: var(--gold-accent);
+            stroke-width: 3px;
+        }
+
+
+        .theme-detail-popover {
+            background-color: #f1eae0;
+            border: 1px solid var(--gold-light);
+            border-radius: 8px;
+            padding: 12px 14px;
+            font-size: 0.8rem;
+            color: var(--ink-primary);
+            margin-top: 10px;
+            min-height: 52px;
+            transition: all 0.3s ease;
+        }
+
+
+        .theme-detail-popover strong {
+            display: block;
+            font-family: var(--font-sans);
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--gold-accent);
+            margin-bottom: 2px;
+        }
+
+
+        .intro-paragraph {
+            font-size: 0.9rem;
+            color: var(--text-main);
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+
+        .research-item-card {
+            background-color: #f2ebe0;
+            border-radius: 8px;
+            padding: 12px 14px;
+            margin-bottom: 10px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            border: 1px solid rgba(171, 130, 62, 0.18);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+
+        .research-item-card:hover {
+            transform: translateX(4px);
+            border-color: var(--gold-accent);
+        }
+
+
+        .research-item-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            background: #e9e0d2;
+            color: var(--ink-primary);
+            border: 1px solid rgba(171, 130, 62, 0.25);
+        }
+
+
+        .research-item-icon svg {
+            width: 22px;
+            height: 22px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+
+        .research-item-content h4 {
+            font-family: var(--font-body);
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--ink-primary);
+            line-height: 1.3;
+        }
+
+
+        .research-item-content p {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+            line-height: 1.35;
+        }
+
+
+        .archive-group {
+            margin-bottom: 14px;
+        }
+
+
+        .archive-year {
+            font-family: var(--font-sans);
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--gold-accent);
+            margin-bottom: 4px;
+            display: inline-block;
+            letter-spacing: 0.05em;
+        }
+
+
+        .archive-list {
+            list-style: none;
+            padding-left: 10px;
+            border-left: 1.5px solid var(--gold-light);
+        }
+
+
+        .archive-list li {
+            font-size: 0.82rem;
+            color: var(--text-main);
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+
+        .archive-list li strong {
+            color: var(--ink-primary);
+        }
+
+
+        .archive-list li em {
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+
+        .pub-badge {
+            display: inline-block;
+            font-family: var(--font-sans);
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            padding: 1px 6px;
+            border-radius: 4px;
+            margin-bottom: 3px;
+            background: rgba(25, 46, 35, 0.08);
+            color: var(--ink-primary);
+        }
+
+
+        .timeline-container {
+            position: relative;
+            padding-left: 16px;
+            margin-top: 4px;
+            max-height: 480px;
+            overflow-y: auto;
+            padding-right: 6px;
+        }
+
+
+        .timeline-container::-webkit-scrollbar {
+            width: 4px;
+        }
+
+
+        .timeline-container::-webkit-scrollbar-thumb {
+            background-color: var(--gold-accent);
+            border-radius: 4px;
+        }
+
+
+        .timeline-container::before {
+            content: "";
+            position: absolute;
+            left: 5px;
+            top: 6px;
+            bottom: 6px;
+            width: 1.5px;
+            background-color: var(--gold-light);
+        }
+
+
+        .timeline-entry {
+            position: relative;
+            margin-bottom: 14px;
+        }
+
+
+        .timeline-entry::before {
+            content: "";
+            position: absolute;
+            left: -15.5px;
+            top: 5px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--ink-primary);
+            border: 2px solid var(--paper-card);
+        }
+
+
+        .timeline-entry.conf-entry::before {
+            background-color: var(--gold-accent);
+        }
+
+
+        .timeline-type-tag {
+            display: inline-block;
+            font-family: var(--font-sans);
+            font-size: 0.62rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            padding: 1px 5px;
+            border-radius: 3px;
+            margin-bottom: 2px;
+        }
+
+
+        .tag-degree {
+            background: rgba(25, 46, 35, 0.12);
+            color: var(--ink-primary);
+        }
+
+
+        .tag-conf {
+            background: rgba(171, 130, 62, 0.18);
+            color: #7a581e;
+        }
+
+
+        .tag-pos {
+            background: rgba(44, 71, 56, 0.12);
+            color: var(--ink-light);
+        }
+
+
+        .timeline-year-text {
+            font-family: var(--font-sans);
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--gold-accent);
+            display: block;
+            margin-bottom: 1px;
+        }
+
+
+        .timeline-body h5 {
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--ink-primary);
+            line-height: 1.3;
+        }
+
+
+        .timeline-body p {
+            font-size: 0.76rem;
+            color: var(--text-muted);
+            margin-top: 1px;
+            line-height: 1.35;
+        }
+
+
+        /* General Card Button */
+
+        .btn-card {
+            margin-top: auto;
+            align-self: center;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 9px 20px;
+            border: 1px solid rgba(65, 55, 40, 0.25);
+            border-radius: 20px;
+            text-decoration: none;
+            font-family: var(--font-sans);
+            font-size: 0.74rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            color: var(--ink-primary);
+            text-transform: uppercase;
+            transition: all 0.25s ease;
+            background: transparent;
+            cursor: pointer;
+        }
+
+
+        .btn-card:hover {
+            background-color: var(--ink-primary);
+            color: #ffffff;
+            border-color: var(--ink-primary);
+        }
+
+
+        .map-section {
+            max-width: 1680px;
+            margin: 0 auto 80px;
+            padding: 0 24px;
+        }
+
+
+        .map-card-frame {
+            background-color: var(--paper-card);
+            border: 1px solid var(--gold-light);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+
+        .map-sidebar h3 {
+            font-family: var(--font-sans);
+            font-size: 0.88rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--ink-primary);
+            margin-bottom: 10px;
+        }
+
+
+        .map-sidebar p {
+            font-size: 0.86rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+
+        /* Map Interactive Filter Group (3 Main Categories) */
+
+        .map-filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+
+        .map-filter-btn {
+            background: #f1eae0;
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            padding: 9px 16px;
+            font-family: var(--font-sans);
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--ink-primary);
+            cursor: pointer;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.2s ease;
+        }
+
+
+        .map-filter-btn:hover,
+        .map-filter-btn.active {
+            background-color: var(--ink-primary);
+            color: #ffffff;
+            border-color: var(--ink-primary);
+        }
+
+
+        .map-filter-btn .count-badge {
+            background: rgba(171, 130, 62, 0.25);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+        }
+
+
+        .map-filter-btn.active .count-badge {
+            background: var(--gold-accent);
+            color: #ffffff;
+        }
+
+
+        .map-legend {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            border-top: 1px dashed var(--gold-light);
+            padding-top: 16px;
+        }
+
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            color: var(--ink-primary);
+        }
+
+
+        .legend-pin {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+
+        .pin-green {
+            background-color: #2b5938;
+        }
+
+
+        .pin-gold {
+            background-color: #a88544;
+        }
+
+
+        .map-container {
+            height: 520px;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(171, 130, 62, 0.2);
+            position: relative;
+        }
+
+
+        #researchMap {
+            width: 100%;
+            height: 100%;
+            background-color: #f1eae0;
+        }
+
+
+        .leaflet-tile-pane {
+            filter: sepia(0.35) hue-rotate(-10deg) contrast(1.02) saturate(0.9);
+        }
+
+
+        .compass-overlay {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 75px;
+            height: 75px;
+            z-index: 500;
+            pointer-events: none;
+            opacity: 0.85;
+        }
+
+
+        .leaflet-popup-content-wrapper {
+            background: var(--paper-card);
+            border: 1px solid var(--gold-accent);
+            border-radius: 10px;
+            color: var(--ink-primary);
+            font-family: var(--font-body);
+            padding: 0;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            width: 270px;
+        }
+
+
+        .leaflet-popup-content {
+            margin: 0 !important;
+            line-height: 1.4;
+        }
+
+
+        .map-popup-card-header {
+            width: 100%;
+            height: 110px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+
+        .map-popup-badge {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            font-family: var(--font-sans);
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 3px 8px;
+            border-radius: 4px;
+            color: #ffffff;
+            letter-spacing: 0.04em;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+
+        .badge-conf {
+            background-color: #2b5938;
+        }
+
+
+        .badge-acad {
+            background-color: #a88544;
+        }
+
+
+        .map-popup-body {
+            padding: 12px 14px;
+        }
+
+
+        .map-popup-body h4 {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--ink-primary);
+            margin-bottom: 2px;
+            line-height: 1.2;
+        }
+
+
+        .map-popup-body .institution {
+            font-family: var(--font-sans);
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--gold-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 6px;
+        }
+
+
+        .map-popup-body p {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+
+        .map-popup-body .date-tag {
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            color: var(--ink-light);
+            font-weight: 600;
+            margin-top: 6px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+
+        .leaflet-popup-tip {
+            background: var(--paper-card);
+        }
+
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(19, 34, 25, 0.7);
+            backdrop-filter: blur(4px);
+            z-index: 2000;
+            display: flex;
+            justify-content: flex-end;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+
+        .modal-overlay.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+
+        .modal-drawer {
+            width: min(700px, 92vw);
+            height: 100%;
+            background-color: var(--paper-bg);
+            box-shadow: -10px 0 30px rgba(0,0,0,0.2);
+            padding: 36px 30px;
+            overflow-y: auto;
+            transform: translateX(100%);
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+        }
+
+
+        .modal-overlay.open .modal-drawer {
+            transform: translateX(0);
+        }
+
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1.5px solid var(--gold-light);
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+
+
+        .modal-header h2 {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            color: var(--ink-primary);
+        }
+
+
+        .modal-close-btn {
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+
+        .modal-close-btn:hover {
+            color: var(--ink-primary);
+        }
+
+
+        .archive-modal-item {
+            background: var(--paper-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 14px;
+        }
+
+
+        .archive-modal-item .tag {
+            display: inline-block;
+            font-family: var(--font-sans);
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            background: var(--gold-light);
+            color: var(--ink-primary);
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+        }
+
+
+        .archive-modal-item h4 {
+            font-family: var(--font-body);
+            font-size: 0.98rem;
+            color: var(--ink-primary);
+            margin-bottom: 4px;
+            line-height: 1.35;
+        }
+
+
+        .archive-modal-item p {
+            font-size: 0.84rem;
+            color: var(--text-muted);
+            line-height: 1.45;
+        }
+
+
+        .modal-repo-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px dashed var(--gold-light);
+        }
+
+
+        .modal-repo-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: var(--ink-primary);
+            color: #ffffff;
+            border-radius: 20px;
+            text-decoration: none;
+            font-family: var(--font-sans);
+            font-size: 0.78rem;
+            font-weight: 600;
+            transition: background 0.2s ease;
+        }
+
+
+        .modal-repo-btn:hover {
+            background: var(--gold-accent);
+        }
+
+
+        @media (max-width: 1300px) {
+
+            .dashboard-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+        }
+
+
+        @media (max-width: 820px) {
+
+            .navbar {
+                padding: 16px 24px;
+            }
+
+
+            .nav-toggle {
+                display: block;
+            }
+
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--nav-bg);
+                flex-direction: column;
+                gap: 16px;
+                padding: 20px 24px;
+                display: none;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            }
+
+
+            .nav-links.open {
+                display: flex;
+            }
+
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .map-card-frame {
+                grid-template-columns: 1fr;
+            }
+
+
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+
+
+            .hero {
+                height: 320px;
+            }
+
+        }
+/* Smooth Page Entry */
+
+body {
+    animation: pageFadeIn 0.5s ease-out;
+}
+
+@keyframes pageFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+    </style>
+
+
+</head>
+
+
+<body id="top">
+
+
+    <!-- PAPER GRAIN -->
+
+    <svg class="paper-grain-overlay">
+
+        <filter id="noiseFilter">
+
+            <feTurbulence
+                type="fractalNoise"
+                baseFrequency="0.8"
+                numOctaves="3"
+                stitchTiles="stitch">
+            </feTurbulence>
+
+        </filter>
+
+
+        <rect
+            width="100%"
+            height="100%"
+            filter="url(#noiseFilter)">
+        </rect>
+
+    </svg>
+
+   <header class="w-full absolute top-0 left-0 z-50 pt-8 pb-4 px-8 lg:px-20">
+
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+
+                </a>
+
+<!-- BRAND -->
+
+<a href="index.html"
+   class="flex items-center space-x-3.5 group">
+
+    <div class="w-9 h-9 rounded-full border border-[#1C352D]/40 flex items-center justify-center group-hover:border-[#B8933E] transition-colors">
+
+        <svg class="w-4 h-4 text-[#B8933E]"
+             fill="none"
+             stroke="currentColor"
+             stroke-width="1.5"
+             viewBox="0 0 24 24">
+
+            <path stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 21v-8m0 0C9.5 13 4 10.5 4 6c0 0 3.5 0 8 5m0 2c2.5 0 8-2.5 8-7 0 0-3.5 0-8 5">
+            </path>
+
+        </svg>
+
+    </div>
+
+
+    <div class="flex flex-col">
+
+        <span class="font-serif text-2xl tracking-wide text-[#1C352D] font-medium group-hover:text-[#B8933E] transition-colors leading-none">
+            Dr. Nirmalendu Maiti
+        </span>
+
+        <span class="text-[9px] sm:text-[10px] tracking-[0.18em] uppercase text-[#1C352D]/60 mt-1 group-hover:text-[#B8933E]/80 transition-colors whitespace-nowrap">
+            Mapping Literature, Ecology, and Postcolonial Space
+        </span>
+
+    </div>
+
+</a>
+        <!-- DESKTOP NAVIGATION -->
+
+<nav class="nav-links hidden md:flex items-center text-sm font-sans whitespace-nowrap">
+
+    <a href="index.html"
+       class="whitespace-nowrap">
+        Home
+    </a>
+
+    <a href="about.html"
+       class="whitespace-nowrap">
+        About
+    </a>
+
+    <a href="research_landscape_page.html"
+       class="active whitespace-nowrap">
+        Research Landscape
+    </a>
+
+    <a href="teaching.html"
+       class="whitespace-nowrap">
+        Teaching
+    </a>
+
+    <a href="reflections.html"
+       class="whitespace-nowrap">
+        Reflections
+    </a>
+
+    <a href="cv.html"
+       class="whitespace-nowrap">
+        CV
+    </a>
+
+    <a href="contact.html"
+       class="whitespace-nowrap">
+        Contact
+    </a>
+
+</nav>
+
+        <!-- MOBILE MENU BUTTON -->
+
+        <button id="mobile-menu-btn"
+                class="md:hidden text-white hover:text-gold focus:outline-none p-2"
+                aria-label="Open navigation menu">
+
+            <i class="fa-solid fa-bars text-xl"></i>
+
+        </button>
+
+    </div>
+
+
+    <!-- MOBILE NAVIGATION -->
+
+    <div id="mobile-menu"
+         class="hidden md:hidden bg-[#0C1711]/95 backdrop-blur-md rounded-xl mt-4 p-5 space-y-3 text-sm text-white border border-white/10 shadow-2xl">
+
+        <a href="index.html"
+           class="block hover:text-gold">
+            Home
+        </a>
+
+        <a href="about.html"
+           class="block hover:text-gold">
+            About
+        </a>
+
+        <a href="research_landscape_page.html"
+           class="block font-semibold text-gold">
+            Research Landscape
+        </a>
+
+        <a href="teaching.html"
+           class="block hover:text-gold">
+            Teaching
+        </a>
+
+        <a href="reflections.html"
+           class="block hover:text-gold">
+            Reflections
+        </a>
+
+        <a href="cv.html"
+           class="block hover:text-gold">
+            CV
+        </a>
+
+        <a href="contact.html"
+           class="block hover:text-gold">
+            Contact
+        </a>
+
+    </div>
+
+</header>
+
+    <!-- ===================================================== -->
+    <!-- HERO -->
+    <!-- ===================================================== -->
+
+    <section class="hero">
+
+
+        <img
+            class="hero-banner-img"
+            src="research-hero.jpg"
+            alt="Misty River Valley Landscape"
+            onerror="this.src='https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80'"
+        >
+
+
+        <div class="hero-overlay">
+
+            <div class="hero-content">
+
+
+                <h1>
+                    Research Landscape
+                </h1>
+
+
+                <p>
+                    An intellectual map of environmental humanities, postcolonial studies, and academic engagements.
+                </p>
+
+
+                <div class="hero-divider"></div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ===================================================== -->
+    <!-- RESEARCH DASHBOARD -->
+    <!-- ===================================================== -->
+
+    <main class="dashboard-container">
+
+
+        <div class="dashboard-grid">
+
+
+
+            <!-- ================================================= -->
+            <!-- CARD 1: RESEARCH THEMES -->
+            <!-- ================================================= -->
+
+            <article class="card">
+
+
+                <div class="card-title">
+                    RESEARCH THEMES
+                </div>
+
+
+                <div class="diagram-wrapper">
+
+
+                    <svg class="radial-svg"
+                         viewBox="0 0 400 360">
+
+
+                        <circle
+                            cx="200"
+                            cy="180"
+                            r="115"
+                            stroke="#ab823e"
+                            stroke-width="1"
+                            stroke-dasharray="4 4"
+                            fill="none"
+                            opacity="0.4"
+                        />
+
+
+                        <circle
+                            cx="200"
+                            cy="180"
+                            r="55"
+                            stroke="#ab823e"
+                            stroke-width="1"
+                            stroke-dasharray="3 3"
+                            fill="none"
+                            opacity="0.25"
+                        />
+
+
+
+                        <!-- Center Compass Rose -->
+
+                        <g transform="translate(200, 180)">
+
+                            <circle
+                                r="22"
+                                fill="#fcf9f4"
+                                stroke="#ab823e"
+                                stroke-width="1.5"
+                            />
+
+
+                            <path
+                                d="M0,-16 L4,-4 L16,0 L4,4 L0,16 L-4,4 L-16,0 L-4,-4 Z"
+                                fill="#192e23"
+                            />
+
+
+                            <text
+                                x="0"
+                                y="-20"
+                                font-family="Plus Jakarta Sans"
+                                font-size="8"
+                                font-weight="700"
+                                fill="#192e23"
+                                text-anchor="middle">
+
+                                N
+
+                            </text>
+
+                        </g>
+
+
+
+                        <!-- Connecting Rays -->
+
+                        <line
+                            x1="200"
+                            y1="180"
+                            x2="200"
+                            y2="65"
+                            stroke="#ab823e"
+                            stroke-width="1"
+                            opacity="0.3"
+                        />
+
+
+                        <line
+                            x1="200"
+                            y1="180"
+                            x2="300"
+                            y2="122"
+                            stroke="#ab823e"
+                            stroke-width="1"
+                            opacity="0.3"
+                        />
+
+
+                        <line
+                            x1="200"
+                            y1="180"
+                            x2="300"
+                            y2="238"
+                            stroke="#ab823e"
+                            stroke-width="1"
+                            opacity="0.3"
+                        />
+
+
+                        <line
+                            x1="200"
+                            y1="180"
+                            x2="200"
+                            y2="295"
+                            stroke="#ab823e"
+                            stroke-width="1"
+                            opacity="0.3"
+                        />
+
+
+                        <line
+                            x1="200"
+                            y1="180"
+                            x2="100"
+                            y2="238"
+                            stroke="#ab823e"
+                            stroke-width="1"
+                            opacity="0.3"
+                        />
+
+
+                        <line
+                            x1="200"
+                            y1="180"
+                            x2="100"
+                            y2="122"
+                            stroke="#ab823e"
+                            stroke-width="1"
+                            opacity="0.3"
+                        />
+
+
+
+                        <!-- Ecological Humanities -->
+
+                        <g
+                            transform="translate(200, 65)"
+                            class="node-circle active"
+                            data-theme="Environmental Humanities"
+                            data-desc="Exploring human-nature entanglements, environmental crisis, and ecological ethics in Anglophone literature."
+                        >
+
+                            <circle
+                                r="18"
+                                fill="#4a5f42"
+                            />
+
+
+                            <path
+                                d="M-4,5 C-4,-5 4,-9 5,-9 C5,-9 5,0 -1,5 Z"
+                                fill="none"
+                                stroke="#ffffff"
+                                stroke-width="1.5"
+                            />
+
+
+                            <text
+                                x="26"
+                                y="-2"
+                                font-family="Cormorant Garamond"
+                                font-size="13"
+                                font-weight="700"
+                                fill="#192e23">
+
+                                Ecological
+
+                            </text>
+
+
+                            <text
+                                x="26"
+                                y="11"
+                                font-family="Cormorant Garamond"
+                                font-size="13"
+                                font-weight="700"
+                                fill="#192e23">
+
+                                Humanities
+
+                            </text>
+
+                        </g>
+
+
+
+                        <!-- Postcolonial Ecocriticism -->
+
+                        <g
+                            transform="translate(300, 122)"
+                            class="node-circle"
+                            data-theme="Postcolonial Ecocriticism"
+                            data-desc="Investigating environmental justice, subaltern identities, and eco-critical narratives in Global South texts."
+                        >
+
+                            <circle
+                                r="18"
+                                fill="#192e23"
+                            />
+
+
+                            <circle
+                                r="7"
+                                fill="none"
+                                stroke="#ffffff"
+                                stroke-width="1.2"
+                            />
+
+
+                            <path
+                                d="M-7,0 L7,0 M0,-7 L0,7"
+                                stroke="#ffffff"
+                                stroke-width="1"
+                            />
+
+
+                            <text
+                                x="24"
+                                y="-2"
+                                font-family="Cormorant Garamond"
+                                font-size="13"
+                                font-weight="700"
+                                fill="#192e23">
+
+                                Postcolonial
+
+                            </text>
+
+
+                            <text
+                                x="24"
+                                y="11"
+                                font-family="Cormorant Garamond"
+                                font-size="13"
+                                font-weight="700"
+                                fill="#192e23">
+
+                                Ecocriticism
+
+                            </text>
+
+                        </g>
+
+
+
+                        <!-- Literary Geography -->
+
+                        <g
+                            transform="translate(300, 238)"
+                            class="node-circle"
+                            data-theme="Literary Geography & Space"
+                            data-desc="Examining island eco-spaces, mountain topographies, and the literary construction of physical space."
+                        >
+
+                            <circle
+                                r="18"
+                                fill="#8c5a2b"
+                            />
+
+
+                            <path
+                                d="M-6,4 C-2,-4 2,6 6,-2"
+                                fill="none"
+                                stroke="#ffffff"
+                                stroke-width="1.5"
+                            />
+
+
+                            <text
+                                x="24"
+                                y="-2"
+                                font-family="Cormorant Garamond"
+                                font-size="13"
+                                font-weight="700"
+                                fill="#192e23">
+
+                                Literary
+
+                            </text>
+
+
+                            <text
+                                x="24"
+                                y="11"
+                                font-family="Cormorant Garamond"
+                                font-size="13"
+                                font-weight="700"
+                                fill="#192e23">
+
+                                Geography
+
+                            </text>
+
+                        </g>
+
+
+
+                        <!-- Tribal Literatures -->
+
+                        <g
+                            transform="translate(200, 295)"
+                            class="node-circle"
+                            data-theme="Tribal & Indigenous Literature"
+                            data-desc="Analyzing resistance narratives, tribal history, counter-narratives, and indigenous oral memories."
+                        >
+
+                            <circle
+                                r="18"
+                                fill="#2b5938"
+                            />
+
+
+                            <circle
+                                r="6"
+                                fill="none"
+                                stroke="#ffffff"
+                                stroke-width="1.2"
+                            />
+
+
+                            <path
+                                d="M-8,-4 L8,4 M-8,4 L8,-4"
+                                stroke="#ffffff"
+                                stroke-width="1"
+                            />
+
+
+                            <text
+                                x="26"
+                                y="0"
+                                font-family="Cormorant Garamond"
+                                font-size="13"
+                                font-weight="700"
+                                fill="#192e23">
+
+                                Tribal Literatures
+
+                            </text>
+
+                        </g>
+
+
+
+                        <!-- Postcolonial Indian Fiction -->
+
+                        <g
+                            transform="translate(100, 238)"
+                            class="node-circle"
+                            data-theme="Postcolonial Indian English"
+                            data-desc="Studying identity formation, diaspora, displaced communities, and cultural space in modern fiction."
+                        >
+
+                            <circle
+                                r="18"
+                                fill="#703e22"
+                            />
+
+
+                            <path
+                                d="M-6,-3 C-3,-5 0,-3 0,-3 C0,-3 3,-5 6,-3 L6,4 C3,2 0,4 0,4 C0,4 -3,2 -6,4 Z"
+                                fill="none"
+                                stroke="#ffffff"
+                                stroke-width="1.2"
+                            />
+
+
+                            <text
+                                x="-24"
+                                y="-8"
+                                font-family="Cormorant Garamond"
+                                font-size="13"
+                                font-weight="700"
+                                fill="#192e23"
+                                text-anchor="end">
+
+                                Postcolonial
+
+                            </text>
+
+
+                            <text
+                                x="-24"
+                                y="5"
+                                font-family="Cormorant Garamond"
+                                font-size="13"
+                                font-weight="700"
+                                fill="#192e23"
+                                text-anchor="end">
+
+                                Indian Fiction
+
+                            </text>
+
+                        </g>
+
+
+
+                        <!-- Eco-geographical Spaces -->
+
+                        <g
+                            transform="translate(100, 122)"
+                            class="node-circle"
+                            data-theme="Mountain & Island Geographies"
+                            data-desc="Ecocritical analysis of Himalayan heights and Andaman archipelagos in contemporary Anglophone writing."
+                        >
+
+                            <circle
+                                r="18"
+                                fill="#a88544"
+                            />
+
+
+                            <path
+                                d="M-6,5 L-1,-4 L3,1 L7,5 Z"
+                                fill="none"
+                                stroke="#ffffff"
+                                stroke-width="1.3"
+                            />
+
+
+                            <path
+                                d="M-7,6 C-2,4 2,8 7,6"
+                                fill="none"
+                                stroke="#ffffff"
+                                stroke-width="1"
+                            />
+
+
+                            <text
+                                x="-24"
+                                y="-8"
+                                font-family="Cormorant Garamond"
+                                font-size="13"
+                                font-weight="700"
+                                fill="#192e23"
+                                text-anchor="end">
+
+                                Island &amp; Mountain
+
+                            </text>
+
+
+                            <text
+                                x="-24"
+                                y="5"
+                                font-family="Cormorant Garamond"
+                                font-size="13"
+                                font-weight="700"
+                                fill="#192e23"
+                                text-anchor="end">
+
+                                Eco-spaces
+
+                            </text>
+
+                        </g>
+
+
+                    </svg>
+
+                </div>
+
+
+
+                <div class="theme-detail-popover"
+                     id="themePopover">
+
+                    <strong id="popoverTitle">
+                        Ecological Humanities
+                    </strong>
+
+                    <span id="popoverBody">
+                        Exploring human-nature entanglements, environmental crisis, and ecological ethics in Anglophone literature.
+                    </span>
+
+                </div>
+
+
+
+                <button
+                    class="btn-card"
+                    id="openArchiveBtn1"
+                    style="margin-top:16px;">
+
+                    EXPLORE PUBLICATIONS &rarr;
+
+                </button>
+
+
+            </article>
+
+
+
+            <!-- ================================================= -->
+            <!-- CARD 2: CURRENT RESEARCH -->
+            <!-- ================================================= -->
+
+            <article class="card">
+
+
+                <div class="card-title">
+                    CURRENT RESEARCH
+                </div>
+
+
+                <p class="intro-paragraph">
+
+                    My doctoral research at
+                    <strong>Vidyasagar University</strong>
+                    investigates the intersection of Ecological Humanities and Anglophone Fiction, focusing on postcolonial ecocriticism and eco-geographical spaces. My paper at <strong><em>Resistance</em></strong> conceptualises 'Dumped Communities' and 'Living Garbage'.
+
+
+                </p>
+
+
+
+                <!-- Item 1 -->
+
+                <div class="research-item-card">
+
+
+                    <div
+                        class="research-item-icon"
+                        title="Island & Archipelago Eco-Spaces"
+                    >
+
+                        <svg viewBox="0 0 24 24">
+
+                            <path
+                                d="M2 19c3-1.5 6 1.5 9 0s6-1.5 9 0 M4 16c3-1.5 6 1.5 9 0s6-1.5 7 0">
+                            </path>
+
+
+                            <path
+                                d="M12 14c-1-3 0-6 2-8">
+                            </path>
+
+
+                            <path
+                                d="M14 6c-2-1-4 0-5 2 M14 6c1-2 3-2 5 0 M14 6c2 1 3 3 2 5">
+                            </path>
+
+                        </svg>
+
+                    </div>
+
+
+                    <div class="research-item-content">
+
+                        <h4>
+                            Eco-geographical Spaces
+                        </h4>
+
+                        <p>
+                            Spatial intersection between place, culture, and environmental surroundings
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Item 2 -->
+
+                <div class="research-item-card">
+
+
+                    <div
+                        class="research-item-icon"
+                        title="Himalayan Mountain Topographies"
+                    >
+
+                        <svg viewBox="0 0 24 24">
+
+                            <path
+                                d="M3 20l7-12 3 4 4-7 4 15H3z">
+                            </path>
+
+
+                            <path
+                                d="M7.5 12.3l2.5-1.3 2.5 2.5 M15 8.5l2 2.5 2-1">
+                            </path>
+
+                        </svg>
+
+                    </div>
+
+
+                    <div class="research-item-content">
+
+                        <h4>
+                            Dumped Communities and Living Garbage
+                        </h4>
+
+                        <p>
+                            My paper questions: What if living species and communities are also treated as garbage and dumped?
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Item 3 -->
+
+                <div class="research-item-card">
+
+
+                    <div
+                        class="research-item-icon"
+                        title="Subaltern Counter-Narratives"
+                    >
+
+                        <svg viewBox="0 0 24 24">
+
+                            <path
+                                d="M20.24 12.24a6 6 0 0 0-8.49-8.49L3 13v5h5l12.24-12.24z">
+                            </path>
+
+
+                            <line
+                                x1="16"
+                                y1="8"
+                                x2="2"
+                                y2="22">
+                            </line>
+
+                        </svg>
+
+                    </div>
+
+
+                    <div class="research-item-content">
+
+                        <h4>
+                   Psychogeography and the Himalayan Hill Space
+                        </h4>
+
+                        <p>
+                            Analysis of the urban spaces of the hill stations in Darjeeling and Kalimpong through Sai's psychogeographical exploration in Kiran Desai's <em>The Inheritance of Loss</em>.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Item 4 -->
+
+                <div class="research-item-card">
+
+
+                    <div
+                        class="research-item-icon"
+                        title="Ecological Ethics & Justice"
+                    >
+
+                        <svg viewBox="0 0 24 24">
+
+                            <path
+                                d="M12 3v18M5 8h14M5 8l-3 7h6L5 8zM19 8l-3 7h6l-3-7zM10 21h4">
+                            </path>
+
+                        </svg>
+
+                    </div>
+
+
+                    <div class="research-item-content">
+
+                        <h4>
+                            Eco-literary Ethics &amp; Postcolonial Spaces
+                        </h4>
+
+                        <p>
+                            Examining environmental grief, borderlands, and non-human agency.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </article>
+
+            <!-- ================================================= -->
+            <!-- CARD 3: RESEARCH ARCHIVE -->
+            <!-- ================================================= -->
+
+            <article class="card">
+
+
+                <div class="card-title">
+
+                    RESEARCH ARCHIVE
+
+                    <span class="action-link"
+                          id="openArchiveBtn2">
+
+                        View All &rarr;
+
+                    </span>
+
+                </div>
+
+
+
+                <!-- 2025 -->
+
+                <div class="archive-group">
+
+                    <span class="archive-year">
+                        2025
+                    </span>
+
+                    <ul class="archive-list">
+
+                        <li>
+
+                            <span class="pub-badge">
+                                Journal Article
+                            </span>
+
+                            <br>
+
+                            <strong>
+                                "Living Garbage and the 'Wasteland' of Edenic Andaman..."
+                            </strong>
+
+                            <br>
+
+                            <em>
+                                Resistance: Radical Environmental Humanities
+                                (Univ of Nebraska Press)
+                            </em>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+
+                <!-- 2023 -->
+
+                <div class="archive-group">
+
+                    <span class="archive-year">
+                        2023
+                    </span>
+
+                    <ul class="archive-list">
+
+                        <li>
+
+                            <span class="pub-badge">
+                                Book Chapter
+                            </span>
+
+                            <br>
+
+                            <strong>
+                                "Local Natures and Regional Responses: Transforming Himalayan Eco-Space..."
+                            </strong>
+
+                            <br>
+
+                            <em>
+                                Regional Identities
+                                (Vol IV, Highbrow Publications)
+                            </em>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+
+                <!-- 2022 -->
+
+                <div class="archive-group">
+
+                    <span class="archive-year">
+                        2022
+                    </span>
+
+                    <ul class="archive-list">
+
+                        <li>
+
+                            <span class="pub-badge">
+                                Book Chapter
+                            </span>
+
+                            <br>
+
+                            <strong>
+                                "Urbanity and Transformation of Island Life: Jail, Jungle, and Jarawa..."
+                            </strong>
+
+                            <br>
+
+                            <em>
+                                Ecology, Literature, and Culture
+                                (Atlantic)
+                            </em>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+
+                <!-- 2020 -->
+
+                <div class="archive-group">
+
+                    <span class="archive-year">
+                        2020
+                    </span>
+
+                    <ul class="archive-list">
+
+
+                        <li>
+
+                            <span class="pub-badge">
+                                Journal Article
+                            </span>
+
+                            <br>
+
+                            <strong>
+                                "Resistance and Resilience: Tribal History and Counter-Narrative..."
+                            </strong>
+
+                            <br>
+
+                            <em>
+                                LangLit (Vol. 7, No. 2)
+                            </em>
+
+                        </li>
+
+
+                        <li>
+
+                            <span class="pub-badge">
+                                Book Chapter
+                            </span>
+
+                            <br>
+
+                            <strong>
+                                "Shadow Lines: The Border, the 'Other,' and the Eco-literary..."
+                            </strong>
+
+                            <br>
+
+                            <em>
+                                Crossing the Shadow Lines (QuadRi, Italy)
+                            </em>
+
+                        </li>
+
+
+                    </ul>
+
+                </div>
+
+
+
+                <!-- 2019 -->
+
+                <div class="archive-group">
+
+                    <span class="archive-year">
+                        2019
+                    </span>
+
+                    <ul class="archive-list">
+
+                        <li>
+
+                            <span class="pub-badge">
+                                Journal Article
+                            </span>
+
+                            <br>
+
+                            <strong>
+                                "Exploitation of the Nature in Stephen Alter's..."
+                            </strong>
+
+                            <br>
+
+                            <em>
+                                New Academia (Vol. VIII, Issue II)
+                            </em>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+
+                <button
+                    class="btn-card"
+                    id="openArchiveBtn3">
+
+                    BROWSE FULL REPOSITORY &rarr;
+
+                </button>
+
+
+            </article>
+
+
+
+            <!-- ================================================= -->
+            <!-- CARD 4: ACADEMIC TIMELINE -->
+            <!-- ================================================= -->
+
+            <article class="card">
+
+
+                <div class="card-title">
+
+                    ACADEMIC TIMELINE
+
+                    <span
+                        class="action-link"
+                        id="openArchiveBtn4">
+
+                        Full CV &rarr;
+
+                    </span>
+
+                </div>
+
+
+                <div class="timeline-container">
+
+ <!-- 2026 PhD -->
+
+                    <div class="timeline-entry">
+
+                        <span class="timeline-type-tag tag-pos">
+                            PhD
+                        </span>
+
+                        <span class="timeline-year-text">
+                            Sep 2026
+                        </span>
+
+                        <div class="timeline-body">
+
+                            <h5>
+                                Representation of Postcolonial Eco-geographical Spaces
+                            </h5>
+
+                            <p>
+                                Vidyasagar University, West Bengal
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- 2025 GIAN -->
+
+                    <div class="timeline-entry">
+
+                        <span class="timeline-type-tag tag-pos">
+                            GIAN Course
+                        </span>
+
+                        <span class="timeline-year-text">
+                            Aug 2025
+                        </span>
+
+                        <div class="timeline-body">
+
+                            <h5>
+                                Participant, GIAN Course
+                            </h5>
+
+                            <p>
+                                AMU Aligarh —
+                                'Indian Women Diaspora &amp; Linguistic Identities'
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- 2025 Summer School -->
+
+                    <div class="timeline-entry">
+
+                        <span class="timeline-type-tag tag-pos">
+                            Summer School
+                        </span>
+
+                        <span class="timeline-year-text">
+                            July 2025
+                        </span>
+
+                        <div class="timeline-body">
+
+                            <h5>
+                                Summer School
+                            </h5>
+
+                            <p>
+                                IISER Bhopal —
+                                Medical Humanities: Discourses &amp; Debates
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- 2024 Role -->
+
+                    <div class="timeline-entry">
+
+                        <span class="timeline-type-tag tag-degree">
+                            Position
+                        </span>
+
+                        <span class="timeline-year-text">
+                            2024 – Present
+                        </span>
+
+                        <div class="timeline-body">
+
+                            <h5>
+                                Academic Counsellor
+                            </h5>
+
+                            <p>
+                                Dept of English,
+                                Netaji Subhas Open University (NSOU)
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- 2024 Conference 1 -->
+
+                    <div class="timeline-entry conf-entry">
+
+                        <span class="timeline-type-tag tag-conf">
+                            Presentation
+                        </span>
+
+                        <span class="timeline-year-text">
+                            March 2024
+                        </span>
+
+                        <div class="timeline-body">
+
+                            <h5>
+                                Paper Presenter
+                            </h5>
+
+                            <p>
+                                Central University of Odisha, Koraput —
+                                Mountain Space &amp; Belonging
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- 2024 Conference 2 -->
+
+                    <div class="timeline-entry conf-entry">
+
+                        <span class="timeline-type-tag tag-conf">
+                            Presentation
+                        </span>
+
+                        <span class="timeline-year-text">
+                            Jan 2024
+                        </span>
+
+                        <div class="timeline-body">
+
+                            <h5>
+                                Paper Presenter
+                            </h5>
+
+                            <p>
+                                University of Lucknow —
+                                Diaspora &amp; Bonded Labor Narratives
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- 2023 Conference -->
+
+                    <div class="timeline-entry conf-entry">
+
+                        <span class="timeline-type-tag tag-conf">
+                            Presentation
+                        </span>
+
+                        <span class="timeline-year-text">
+                            Aug 2023
+                        </span>
+
+                        <div class="timeline-body">
+
+                            <h5>
+                                ESEH Conference Presenter
+                            </h5>
+
+                            <p>
+                                University of Bern, Switzerland —
+                                Environmental Humanities
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- 2021 Degree -->
+
+                    <div class="timeline-entry">
+
+                        <span class="timeline-type-tag tag-degree">
+                            Degree
+                        </span>
+
+                        <span class="timeline-year-text">
+                            2021
+                        </span>
+
+                        <div class="timeline-body">
+
+                            <h5>
+                                PGDTE Qualification
+                            </h5>
+
+                            <p>
+                                EFLU, Hyderabad (Grade B+)
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- 2014 BA Degree -->
+
+                    <div class="timeline-entry">
+
+                        <span class="timeline-type-tag tag-degree">
+                            Degree
+                        </span>
+
+                        <span class="timeline-year-text">
+                            2014
+                        </span>
+
+                        <div class="timeline-body">
+
+                            <h5>
+                                B.A. (Hons) in English
+                            </h5>
+
+                            <p>
+                                Vidyasagar University
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </main>
+
+
+
+    <!-- ===================================================== -->
+    <!-- ACADEMIC MAP -->
+    <!-- ===================================================== -->
+
+    <section class="map-section">
+
+
+        <div class="map-card-frame">
+
+
+            <div class="map-sidebar">
+
+
+                <h3>
+                    ACADEMIC MAP
+                </h3>
+
+
+                <p>
+                    Geographical representation of research presentations,
+                    academic pursuits, and institutional engagements.
+                </p>
+
+
+
+                <!-- Filter Buttons -->
+
+                <div class="map-filter-group">
+
+
+                    <button
+                        class="map-filter-btn active"
+                        data-filter="all">
+
+                        All Locations
+
+                        <span
+                            class="count-badge"
+                            id="countAll">
+
+                            19
+
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="map-filter-btn"
+                        data-filter="conference">
+
+                        Presentations &amp; Conferences
+
+                        <span
+                            class="count-badge"
+                            id="countConf">
+
+                            13
+
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="map-filter-btn"
+                        data-filter="academic">
+
+                        Academic Pursuits
+
+                        <span
+                            class="count-badge"
+                            id="countAcad">
+
+                            6
+
+                        </span>
+
+                    </button>
+
+
+                </div>
+
+
+
+                <!-- Map Legend -->
+
+                <ul class="map-legend">
+
+
+                    <li class="legend-item">
+
+                        <span class="legend-pin pin-green"></span>
+
+                        Conferences &amp; Symposia
+
+                    </li>
+
+
+                    <li class="legend-item">
+
+                        <span class="legend-pin pin-gold"></span>
+
+                        Academic Pursuits
+
+                    </li>
+
+
+                </ul>
+
+
+            </div>
+
+
+
+            <div class="map-container">
+
+
+                <div id="researchMap"></div>
+
+
+                <!-- Compass Rose -->
+
+                <svg
+                    class="compass-overlay"
+                    viewBox="0 0 100 100">
+
+                    <circle
+                        cx="50"
+                        cy="50"
+                        r="42"
+                        fill="none"
+                        stroke="#8c5a2b"
+                        stroke-width="1"
+                        stroke-dasharray="2 2">
+                    </circle>
+
+
+                    <path
+                        d="M50,10 L55,45 L90,50 L55,55 L50,90 L45,55 L10,50 L45,45 Z"
+                        fill="#192e23"
+                        opacity="0.85">
+                    </path>
+
+
+                    <path
+                        d="M50,10 L50,50 L90,50 Z M50,90 L50,50 L10,50 Z"
+                        fill="#ab823e"
+                        opacity="0.9">
+                    </path>
+
+
+                    <text
+                        x="50"
+                        y="8"
+                        font-family="Plus Jakarta Sans"
+                        font-size="8"
+                        font-weight="700"
+                        fill="#192e23"
+                        text-anchor="middle">
+
+                        N
+
+                    </text>
+
+                </svg>
+
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ===================================================== -->
+    <!-- PUBLICATIONS MODAL -->
+    <!-- ===================================================== -->
+
+    <div
+        class="modal-overlay"
+        id="archiveModal">
+
+
+        <div class="modal-drawer">
+
+
+            <div class="modal-header">
+
+
+                <h2>
+                    Publications &amp; Repository
+                </h2>
+
+
+                <button
+                    class="modal-close-btn"
+                    id="closeModalBtn">
+
+                    &times;
+
+                </button>
+
+
+            </div>
+
+            <!-- ================================================= -->
+            <!-- PUBLICATION 2025 -->
+            <!-- ================================================= -->
+
+            <div class="archive-modal-item">
+
+                <span class="tag">
+                    Journal Article • 2025
+                </span>
+
+                <h4>
+                    "Living Garbage and the 'Wasteland' of Edenic Andaman: 'Dumped' Communities and Disrupted Island Eco-space in Pankaj Sekhsaria's The Last Wave"
+                </h4>
+
+                <p>
+                    Published in
+                    <em>
+                        Resistance: A Journal of Radical Environmental Humanities
+                    </em>
+                    (Vol. 12, Univ of Nebraska Press).
+                    DOI: 10.1353/res.2025.a988440
+                </p>
+
+            </div>
+
+
+
+            <!-- ================================================= -->
+            <!-- PUBLICATION 2023 -->
+            <!-- ================================================= -->
+
+            <div class="archive-modal-item">
+
+                <span class="tag">
+                    Book Chapter • 2023
+                </span>
+
+                <h4>
+                    "Local Natures and Regional Responses: A Psychogeographical Journey of Transforming Himalayan Eco-Space in Kiran Desai's The Inheritance of Loss"
+                </h4>
+
+                <p>
+                    Published in
+                    <em>
+                        Regional Identities: Makers of Regional History, Society, Culture &amp; Literature (Vol IV)
+                    </em>,
+                    Highbrow Publications, pp. 145-163.
+                </p>
+
+            </div>
+
+
+
+            <!-- ================================================= -->
+            <!-- PUBLICATION 2022 -->
+            <!-- ================================================= -->
+
+            <div class="archive-modal-item">
+
+                <span class="tag">
+                    Book Chapter • 2022
+                </span>
+
+                <h4>
+                    "Urbanity and Transformation of Island Life: Jail, Jungle, and the Jarawa in Pankaj Sekhsaria's The Last Wave"
+                </h4>
+
+                <p>
+                    Published in
+                    <em>
+                        Ecology, Literature, and Culture: An Anthology of Recent Studies
+                    </em>,
+                    Atlantic, pp. 1-17.
+                </p>
+
+            </div>
+
+
+
+            <!-- ================================================= -->
+            <!-- PUBLICATION 2020 -->
+            <!-- ================================================= -->
+
+            <div class="archive-modal-item">
+
+                <span class="tag">
+                    Journal Article • 2020
+                </span>
+
+                <h4>
+                    "Resistance and Resilience: Tribal History and Counter-Narrative in Sanjay Bahadur's Hul: Cry Rebel"
+                </h4>
+
+                <p>
+                    Published in
+                    <em>
+                        LangLit
+                    </em>
+                    (Vol. 7, No. 2), pp. 149-155.
+                </p>
+
+            </div>
+
+
+
+            <div class="archive-modal-item">
+
+                <span class="tag">
+                    Book Chapter • 2020
+                </span>
+
+                <h4>
+                    "Shadow Lines: The Border, the 'Other,' and the Eco-literary in The Hungry Tide and The Great Derangement"
+                </h4>
+
+                <p>
+                    Published in
+                    <em>
+                        Crossing the Shadow Lines: Essays on Amitav Ghosh
+                    </em>,
+                    QuadRi, Italy, pp. 95-109.
+                </p>
+
+            </div>
+
+
+
+            <!-- ================================================= -->
+            <!-- PUBLICATION 2019 -->
+            <!-- ================================================= -->
+
+            <div class="archive-modal-item">
+
+                <span class="tag">
+                    Journal Article • 2019
+                </span>
+
+                <h4>
+                    "Exploitation of the Nature and the Transformation of the Wild in Stephen Alter's In the Jungles of the Night"
+                </h4>
+
+                <p>
+                    Published in
+                    <em>
+                        New Academia
+                    </em>
+                    (Vol. VIII, Issue II), pp. 308-318.
+                </p>
+
+            </div>
+
+
+
+            <!-- ================================================= -->
+            <!-- CONFERENCE PROCEEDING 2019 -->
+            <!-- ================================================= -->
+
+            <div class="archive-modal-item">
+
+                <span class="tag">
+                    Conference Proceeding • 2019
+                </span>
+
+                <h4>
+                    "The Minion Mountain: Depiction of Life in Ruskin Bond's Roads to Mussoorie"
+                </h4>
+
+                <p>
+                    Published in
+                    <em>
+                        Proceedings of the 37th International Conference on Mountain Literature
+                    </em>,
+                    Literary Association of Nepal (LAN), Kathmandu, pp. 104-110.
+                </p>
+
+            </div>
+
+
+
+            <!-- ================================================= -->
+            <!-- PUBLICATION 2016 -->
+            <!-- ================================================= -->
+
+            <div class="archive-modal-item">
+
+                <span class="tag">
+                    Journal Article • 2016
+                </span>
+
+                <h4>
+                    "The Last of Arthur's Knights and a Quest for Living Memories in Kazuo Ishiguro's The Buried Giant"
+                </h4>
+
+                <p>
+                    Published in
+                    <em>
+                        LangLit
+                    </em>
+                    (Vol. 3, No. 1), pp. 720-725.
+                </p>
+
+            </div>
+
+
+
+            <!-- ================================================= -->
+            <!-- REPOSITORY LINKS -->
+            <!-- ================================================= -->
+
+            <div class="modal-repo-links">
+
+                <a
+                    href="https://independent.academia.edu/NirmalenduMaiti"
+                    target="_blank"
+                    class="modal-repo-btn">
+
+                    🌐 Academia.edu Profile
+
+                </a>
+
+
+                <a
+                    href="https://orcid.org/0009-0000-1035-2841"
+                    target="_blank"
+                    class="modal-repo-btn">
+
+                    🆔 ORCID Record
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ===================================================== -->
+    <!-- LEAFLET JS -->
+    <!-- ===================================================== -->
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+
+    <script>
+
+
+        /* =====================================================
+           MOBILE NAVIGATION
+           ===================================================== */
+
+        const navToggle =
+            document.getElementById('navToggle');
+
+        const navLinks =
+            document.getElementById('navLinks');
+
+
+        if (navToggle && navLinks) {
+
+            navToggle.addEventListener('click', () => {
+
+                navLinks.classList.toggle('open');
+
+            });
+
+        }
+
+
+
+        /* =====================================================
+           RESEARCH THEME INTERACTION
+           ===================================================== */
+
+        const nodeCircles =
+            document.querySelectorAll('.node-circle');
+
+        const popoverTitle =
+            document.getElementById('popoverTitle');
+
+        const popoverBody =
+            document.getElementById('popoverBody');
+
+
+        nodeCircles.forEach(node => {
+
+            node.addEventListener('click', function () {
+
+
+                nodeCircles.forEach(n => {
+
+                    n.classList.remove('active');
+
+                });
+
+
+                this.classList.add('active');
+
+
+                const themeName =
+                    this.getAttribute('data-theme');
+
+
+                const themeDesc =
+                    this.getAttribute('data-desc');
+
+
+                if (popoverTitle && popoverBody) {
+
+                    popoverTitle.textContent =
+                        themeName;
+
+                    popoverBody.textContent =
+                        themeDesc;
+
+                }
+
+            });
+
+        });
+
+
+
+        /* =====================================================
+           ACADEMIC MAP
+           ===================================================== */
+
+        const map =
+            L.map('researchMap', {
+
+                center: [23.5, 78.0],
+
+                zoom: 4,
+
+                zoomControl: false,
+
+                attributionControl: false
+
+            });
+
+
+
+       L.tileLayer(
+    'https://basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}.png?key=cb1_40mu_1_b4693e51246e004efc84fcc8',
+    {
+        maxZoom: 20,
+        attribution:
+            '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+            '© <a href="https://carto.com/attribution/">CARTO</a>'
+    }
+).addTo(map);
+
+
+
+        /* Main academic hub */
+
+        const homeHub =
+            [22.18, 87.98];
+
+
+
+        /* =====================================================
+           MAP LOCATIONS
+           ===================================================== */
+
+        const mapLocations = [
+
+    // =====================================================
+    // ACADEMIC PURSUITS
+    // =====================================================
+
+    {
+        name: "Midnapore, India",
+        institution: "Vidyasagar University",
+        coords: [22.4257, 87.3199],
+        category: "academic",
+        year: "2026",
+        desc: "PhD on Ecological Humanities & Anglophone Fiction.",
+        image: "images/midnapore.jpg"
+    },
+
+    {
+        name: "Andaman & Nicobar Islands, India",
+        institution: "Field Research & Archipelagic Study",
+        coords: [11.7401, 92.6586],
+        category: "academic",
+        year: "Ongoing Fieldwork",
+        desc: "Archival and field research on island eco-spaces, displaced communities, and postcolonial island narratives.",
+        image: "images/Andaman & Nicobar Islands.jpg"
+    },
+
+    {
+        name: "Hyderabad, India",
+        institution: "EFLU (English & Foreign Languages Univ)",
+        coords: [17.4156, 78.5168],
+        category: "academic",
+        year: "2018 & 2021",
+        desc: "Completed PGCTE (2018, Grade A) and PGDTE (2021, Grade B+) distance qualifications.",
+        image: "images/Hyderabad.jpg"
+    },
+
+    {
+        name: "Bilaspur, India",
+        institution: "Guru Ghasidas Vishwavidyalaya",
+        coords: [22.1287, 82.1360],
+        category: "academic",
+        year: "2016",
+        desc: "Completed M.A. in English with 1st Position (Gold Medalist) & GIAN Workshop.",
+        image: "images/ggv.jpeg"
+    },
+
+    {
+        name: "Aligarh, India",
+        institution: "Aligarh Muslim University (AMU)",
+        coords: [27.9135, 78.0782],
+        category: "academic",
+        year: "Aug 2025",
+        desc: "Participated in GIAN Course on 'Indian Women Diaspora & Linguistic Identities' at Women's College.",
+        image: "images/amu.png"
+    },
+
+    {
+        name: "Bhopal, India",
+        institution: "IISER Bhopal",
+        coords: [23.2843, 77.2766],
+        category: "academic",
+        year: "July 2025",
+        desc: "Participated in Summer School on 'Medical Humanities: Discourses & Debates' with SAMHEN.",
+        image: "images/iiser.jpg"
+    },
+
+
+    // =====================================================
+    // PRESENTATIONS & CONFERENCES
+    // =====================================================
+
+    {
+        name: "Bern, Switzerland",
+        institution: "University of Bern / ESEH",
+        coords: [46.9480, 7.4474],
+        category: "conference",
+        year: "Aug 2023",
+        desc: "Presented paper at European Society for Environmental History Conference & Swiss Alpine Museum.",
+        image: "images/bern.jpg"
+    },
+
+    {
+        name: "Milan & Turin, Italy",
+        institution: "Univ of Milan & Univ of Turin",
+        coords: [45.4642, 9.1900],
+        category: "conference",
+        year: "Nov 2018",
+        desc: "Presented paper on Amitav Ghosh's eco-literary works at International Shadow Lines Conference.",
+        image: "images/milan.png"
+    },
+
+    {
+        name: "Kathmandu, Nepal",
+        institution: "Literary Association of Nepal (LAN)",
+        coords: [27.7172, 85.3240],
+        category: "conference",
+        year: "2018 & 2019",
+        desc: "Presented papers on mountain literature, Ruskin Bond, and Stephen Alter.",
+        image: "images/pokhara.jpg"
+    },
+
+    {
+        name: "Yonphula, Bhutan",
+        institution: "Yonphula Centenary College",
+        coords: [27.2612, 91.5075],
+        category: "conference",
+        year: "Sept 2020",
+        desc: "Presented paper on Kiran Desai's Inheritance of Loss at Royal University of Bhutan.",
+        image: "images/yonphula.jpg"
+    },
+
+    {
+        name: "Koraput, Odisha",
+        institution: "Central University of Odisha",
+        coords: [18.8135, 82.7123],
+        category: "conference",
+        year: "March 2024",
+        desc: "Presented paper on mountain space & belonging in Kiran Desai's fiction.",
+        image: "images/koraput.jpg"
+    },
+
+    {
+        name: "Lucknow, India",
+        institution: "University of Lucknow",
+        coords: [26.8667, 80.9333],
+        category: "conference",
+        year: "Jan 2024",
+        desc: "Presented paper on diaspora, bonded coolies, and root searching at Diaspora Studies Centre.",
+        image: "images/lucknow.jpeg"
+    },
+
+    {
+        name: "Varanasi, India",
+        institution: "Banaras Hindu University (BHU)",
+        coords: [25.2677, 82.9913],
+        category: "conference",
+        year: "March 2018",
+        desc: "Presented paper on Ecological Humanities & Pankaj Sekhsaria's Andaman fiction.",
+        image: "images/bhu.jpg"
+    },
+
+    {
+        name: "Raipur, India",
+        institution: "MATS University",
+        coords: [21.2519, 81.6381],
+        category: "conference",
+        year: "Oct 2015",
+        desc: "Presented paper on Globalization, Woman and Motherhood in Jhumpa Lahiri’s “Mrs. Sen’s”.",
+        image: "images/mats.jpg"
+    },
+
+    {
+        name: "Belda, India",
+        institution: "Belda College",
+        coords: [22.0705, 87.3365],
+        category: "conference",
+        year: "March 2019",
+        desc: "Presented paper on Eco-Literary Consciousness in Amitav Ghosh’s The Hungry Tide",
+        image: "images/belda.jpg"
+    },
+
+    {
+        name: "Bengaluru, India",
+        institution: "Garden City College",
+        coords: [12.98125, 77.59375],
+        category: "conference",
+        year: "Feb 2016",
+        desc: "Presented paper on Living Memories in Kazuo Ishiguro's The Buried Giant",
+        image: "images/gcc.jpg"
+    },
+
+    {
+        name: "Diphu, India",
+        institution: "Assam University",
+        coords: [25.8453, 93.4357],
+        category: "conference",
+        year: "Sep 2017",
+        desc: "Presented paper on Historical Fictionalisation of Tribal Resistance in Sanjay Bahadur’s Hul: Cry Rebel",
+        image: "images/diphu.jpeg"
+    },
+
+    {
+        name: "Bajkul, India",
+        institution: "Bajkul Milani Mahavidyalaya",
+        coords: [22.0195, 87.7951],
+        category: "conference",
+        year: "Feb 2019",
+        desc: "Presented paper on Ecological Humanities in Pankaj Sekhsaria’s The Last Wave",
+        image: "images/bajkul.jpg"
+    },
+
+    {
+        name: "Mahishadal, India",
+        institution: "Mahishadal Raj College",
+        coords: [22.1852, 87.9818],
+        category: "conference",
+        year: "2016, 2017, 2018, 2019",
+        desc: "Presented papers on David Dabydeen, Pankaj Sekhsaria, and Stephen Alter",
+        image: "images/mahishadal.jpg"
+    }
+
+];
+
+
+        /* =====================================================
+           ACTIVE MAP ELEMENTS
+           ===================================================== */
+
+        let activeMarkers = [];
+
+        let activeLines = [];
+
+
+
+        /* =====================================================
+           RENDER MAP
+           ===================================================== */
+
+        function renderMapFeatures(
+            filterCategory = 'all'
+        ) {
+
+
+            activeMarkers.forEach(marker => {
+
+                map.removeLayer(marker);
+
+            });
+
+
+            activeLines.forEach(line => {
+
+                map.removeLayer(line);
+
+            });
+
+
+            activeMarkers = [];
+
+            activeLines = [];
+
+
+
+            mapLocations.forEach(loc => {
+
+
+                if (
+                    filterCategory === 'all' ||
+                    loc.category === filterCategory
+                ) {
+
+
+                    const isConf =
+                        loc.category === 'conference';
+
+
+                    const color =
+                        isConf
+                            ? '#2b5938'
+                            : '#a88544';
+
+
+                    const categoryLabel =
+                        isConf
+                            ? 'Presentation'
+                            : 'Academic Pursuit';
+
+
+
+                    /* -----------------------------------------
+                       MAP PIN
+                       ----------------------------------------- */
+
+                    const pinIcon =
+                        L.divIcon({
+
+                            className:
+                                'custom-map-pin',
+
+                            html:
+                                `<div style="
+                                    background-color:${color};
+                                    width:14px;
+                                    height:14px;
+                                    border-radius:50%;
+                                    border:2.5px solid white;
+                                    box-shadow:0 2px 8px rgba(0,0,0,0.4);
+                                "></div>`,
+
+                            iconSize:
+                                [14, 14],
+
+                            iconAnchor:
+                                [7, 7]
+
+                        });
+
+
+
+                    /* -----------------------------------------
+                       POPUP
+                       ----------------------------------------- */
+
+                    const popupHTML = `
+
+                        <div
+                            class="map-popup-card-header"
+                            style="background-image:url('${loc.image}');">
+
+                            <span
+                                class="map-popup-badge ${
+                                    isConf
+                                        ? 'badge-conf'
+                                        : 'badge-acad'
+                                }">
+
+                                ${categoryLabel}
+
+                            </span>
+
+                        </div>
+
+
+                        <div class="map-popup-body">
+
+                            <h4>
+                                ${loc.name}
+                            </h4>
+
+                            <div class="institution">
+
+                                ${loc.institution}
+
+                            </div>
+
+                            <p>
+
+                                ${loc.desc}
+
+                            </p>
+
+                            <div class="date-tag">
+
+                                🗓 ${loc.year}
+
+                            </div>
+
+                        </div>
+
+                    `;
+
+
+
+                    /* -----------------------------------------
+                       MARKER
+                       ----------------------------------------- */
+
+                    const marker =
+                        L.marker(
+                            loc.coords,
+                            {
+                                icon: pinIcon
+                            }
+                        )
+                        .addTo(map)
+                        .bindPopup(popupHTML);
+
+
+                    activeMarkers.push(marker);
+
+
+
+                    /* -----------------------------------------
+                       CONNECTING LINE
+                       ----------------------------------------- */
+
+                    const line =
+                        L.polyline(
+                            [
+                                homeHub,
+                                loc.coords
+                            ],
+                            {
+
+                                color: color,
+
+                                weight: 1.2,
+
+                                dashArray: '4, 6',
+
+                                opacity: 0.45
+
+                            }
+                        )
+                        .addTo(map);
+
+
+                    activeLines.push(line);
+
+                }
+
+            });
+
+        }
+
+
+
+        /* Initial map */
+
+        renderMapFeatures('all');
+
+
+
+        /* =====================================================
+           MAP FILTER BUTTONS
+           ===================================================== */
+
+        const filterBtns =
+            document.querySelectorAll(
+                '.map-filter-btn'
+            );
+
+
+        filterBtns.forEach(btn => {
+
+            btn.addEventListener(
+                'click',
+                function() {
+
+
+                    filterBtns.forEach(b => {
+
+                        b.classList.remove(
+                            'active'
+                        );
+
+                    });
+
+
+                    this.classList.add(
+                        'active'
+                    );
+
+
+                    const filter =
+                        this.getAttribute(
+                            'data-filter'
+                        );
+
+
+                    renderMapFeatures(
+                        filter
+                    );
+
+                }
+            );
+
+        });
+
+
+
+        /* =====================================================
+           PUBLICATIONS MODAL
+           ===================================================== */
+
+        const modal =
+            document.getElementById(
+                'archiveModal'
+            );
+
+
+        const closeModalBtn =
+            document.getElementById(
+                'closeModalBtn'
+            );
+
+
+        const archiveTriggerBtns = [
+
+            document.getElementById(
+                'openArchiveBtn1'
+            ),
+
+            document.getElementById(
+                'openArchiveBtn2'
+            ),
+
+            document.getElementById(
+                'openArchiveBtn3'
+            ),
+
+            document.getElementById(
+                'openArchiveBtn4'
+            )
+
+        ];
+
+
+
+        archiveTriggerBtns.forEach(btn => {
+
+
+            if (btn) {
+
+
+                btn.addEventListener(
+                    'click',
+                    (e) => {
+
+
+                        e.preventDefault();
+
+
+                        if (modal) {
+
+                            modal.classList.add(
+                                'open'
+                            );
+
+                        }
+
+                    }
+                );
+
+            }
+
+        });
+
+
+
+        /* Close button */
+
+        if (closeModalBtn) {
+
+            closeModalBtn.addEventListener(
+                'click',
+                () => {
+
+                    if (modal) {
+
+                        modal.classList.remove(
+                            'open'
+                        );
+
+                    }
+
+                }
+            );
+
+        }
+
+
+
+        /* Click outside drawer */
+
+        if (modal) {
+
+            modal.addEventListener(
+                'click',
+                (e) => {
+
+
+                    if (
+                        e.target === modal
+                    ) {
+
+                        modal.classList.remove(
+                            'open'
+                        );
+
+                    }
+
+                }
+            );
+
+        }
+
+
+    </script>
+
+
+</body>
+<!-- FOOTER -->
+        <footer class="bg-[#0C1711] text-stone-200 px-6 sm:px-12 lg:px-20 py-12">
+            
+            <div class="max-w-7xl mx-auto">
+
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8">
+
+                    <!-- FOOTER BRAND -->
+                    <div class="md:col-span-5">
+                        
+                        <a href="index.html"
+                           class="inline-flex items-center space-x-3 group">
+                            
+                            <div class="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center group-hover:border-[#B8933E] transition-colors">
+                                <svg class="w-4 h-4 text-[#B8933E]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8m0 0C9.5 13 4 10.5 4 6c0 0 3.5 0 8 5m0 2c2.5 0 8-2.5 8-7 0 0-3.5 0-8 5"></path>
+                                </svg>
+                            </div>
+
+                            <span class="font-serif text-2xl text-white group-hover:text-[#B8933E] transition-colors">
+                                Dr. Nirmalendu Maiti
+                            </span>
+
+                        </a>
+
+                        <p class="text-xs text-stone-300 leading-relaxed max-w-sm mt-5">
+                            Mapping literature, ecology, and postcolonial space through interdisciplinary research, teaching, and critical inquiry.
+                        </p>
+
+                    </div>
+
+
+                    <!-- FOOTER NAVIGATION -->
+                    <div class="md:col-span-3">
+                        
+                        <h3 class="text-[10px] uppercase tracking-[0.2em] text-[#B8933E] font-semibold mb-5">
+                            Navigate
+                        </h3>
+
+                        <div class="grid grid-cols-2 gap-y-3 gap-x-5 text-xs">
+
+                            <a href="index.html"
+                               class="text-stone-300 hover:text-[#B8933E] transition-colors">
+                                Home
+                            </a>
+
+                            <a href="about.html"
+                               class="text-stone-300 hover:text-[#B8933E] transition-colors">
+                                About
+                            </a>
+
+                            <a href="research_landscape_page.html"
+                               class="text-stone-300 hover:text-[#B8933E] transition-colors">
+                                Research
+                            </a>
+
+                            <a href="teaching.html"
+                               class="text-stone-300 hover:text-[#B8933E] transition-colors">
+                                Teaching
+                            </a>
+
+                            <a href="reflections.html"
+                               class="text-stone-300 hover:text-[#B8933E] transition-colors">
+                                Reflections
+                            </a>
+
+                            <a href="cv.html"
+                               class="text-stone-300 hover:text-[#B8933E] transition-colors">
+                                CV
+                            </a>
+
+                            <a href="contact.html"
+                               class="text-stone-300 hover:text-[#B8933E] transition-colors">
+                                Contact
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- FOOTER CONTACT -->
+                    <div class="md:col-span-4">
+                        
+                        <h3 class="text-[10px] uppercase tracking-[0.2em] text-[#B8933E] font-semibold mb-5">
+                            Contact
+                        </h3>
+
+                        <div class="space-y-3 text-xs">
+
+                            <a href="mailto:nirmalendu09maiti@gmail.com"
+                               class="flex items-center space-x-3 text-stone-300 hover:text-[#B8933E] transition-colors">
+                                <i class="fa-regular fa-envelope w-4"></i>
+                                <span>nirmalendu09maiti@gmail.com</span>
+                            </a>
+
+                            <a href="contact.html"
+                               class="flex items-center space-x-3 text-stone-300 hover:text-[#B8933E] transition-colors">
+                                <i class="fa-solid fa-location-dot w-4"></i>
+                                <span>Academic Profile & Contact Information</span>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- COPYRIGHT -->
+                <div class="border-t border-white/15 mt-10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-[10px] text-stone-300">
+                    
+                    <span>
+                        © 2026 Nirmalendu Maiti. All rights reserved. | Visitors: <span id="visitor-count" class="text-[#B8933E] font-semibold">1</span>
+                    </span>
+
+                    <span>
+                        Literature · Ecology · Postcolonial Space
+                    </span>
+
+                </div>
+
+            </div>
+        </footer>
+
+    <script>
+        // ==========================================
+        // VISITOR COUNTER (Local Storage fallback)
+        // ==========================================
+        try {
+            let visits = localStorage.getItem('nirmalendu_site_visits');
+            if (!visits) {
+                visits = 1240; // Starting base number
+            } else {
+                visits = parseInt(visits, 10) + 1;
+            }
+            localStorage.setItem('nirmalendu_site_visits', visits);
+            document.getElementById('visitor-count').textContent = visits.toLocaleString();
+        } catch (e) {
+            document.getElementById('visitor-count').textContent = '1,240';
+        }
+
+        // ==========================================
+        // MOBILE NAVIGATION
+        // ==========================================
+
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileMenuBtn && mobileMenu) {
+
+            mobileMenuBtn.addEventListener('click', function () {
+
+                mobileMenu.classList.toggle('hidden');
+
+                const icon = mobileMenuBtn.querySelector('i');
+
+                if (mobileMenu.classList.contains('hidden')) {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                    mobileMenuBtn.setAttribute(
+                        'aria-label',
+                        'Open navigation menu'
+                    );
+                } else {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-xmark');
+                    mobileMenuBtn.setAttribute(
+                        'aria-label',
+                        'Close navigation menu'
+                    );
+                }
+
+            });
+
+
+            // Close mobile menu after clicking a link
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+
+            mobileLinks.forEach(function (link) {
+
+                link.addEventListener('click', function () {
+
+                    mobileMenu.classList.add('hidden');
+
+                    const icon = mobileMenuBtn.querySelector('i');
+
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+
+                    mobileMenuBtn.setAttribute(
+                        'aria-label',
+                        'Open navigation menu'
+                    );
+
+                });
+
+            });
+
+        }
+
+
+        // ==========================================
+        // CLOSE MOBILE MENU WHEN WINDOW IS RESIZED
+        // ==========================================
+
+        window.addEventListener('resize', function () {
+
+            if (window.innerWidth >= 768 && mobileMenu) {
+
+                mobileMenu.classList.add('hidden');
+
+                if (mobileMenuBtn) {
+
+                    const icon = mobileMenuBtn.querySelector('i');
+
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+
+                    mobileMenuBtn.setAttribute(
+                        'aria-label',
+                        'Open navigation menu'
+                    );
+                }
+
+            }
+
+        });
+    </script>
+
+</body>
+</html>

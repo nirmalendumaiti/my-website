@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reflections & Personal Blog – Nirmalendu Maiti</title>
+    <meta name="description" content="Personal blog and academic reflections by Nirmalendu Maiti on ecocriticism, postcolonial geography, tribal encounters, and spatial humanities.">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        parchment: {
+                            DEFAULT: '#F4F0E8',
+                            light: '#FAF8F4',
+                            dark: '#EAE5DA',
+                            border: '#E2DDD0',
+                        },
+                        forest: {
+                            DEFAULT: '#132219',
+                            hover: '#0C1711',
+                            muted: '#2D3E33',
+                        },
+                        gold: {
+                            DEFAULT: '#B8933E',
+                            muted: '#96762E',
+                            bright: '#C29B38',
+                        },
+                        ink: {
+                            heading: '#1A211C',
+                            text: '#2C3530',
+                            muted: '#5A625C',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #F4F0E8;
+            color: #2C3530;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+            animation: pageFadeIn 0.5s ease-out;
+        }
+
+        @keyframes pageFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Large Screen Viewport Framing */
+        @media (min-width: 1536px) {
+            .max-w-7xl, .max-w-6xl {
+                max-width: 1500px !important;
+            }
+        }
+
+        /* Hero Section Banner */
+        .hero-reflections-banner {
+            position: relative;
+            background-color: #132219;
+            background-image: 
+                radial-gradient(circle at 80% 50%, rgba(19, 34, 25, 0.4) 0%, rgba(12, 20, 15, 0.95) 70%),
+                url('jim-corbett.png');
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+        }
+
+        .cloud-fade-container {
+            position: relative;
+            mask-image: radial-gradient(circle at 60% 50%, black 50%, transparent 90%);
+            -webkit-mask-image: radial-gradient(circle at 60% 50%, black 50%, transparent 90%);
+        }
+
+        .cloud-layer-1 {
+            position: absolute;
+            top: 0;
+            left: -50%;
+            width: 200%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.03) 50%, transparent 70%);
+            pointer-events: none;
+            mix-blend-mode: overlay;
+            animation: driftClouds1 35s linear infinite;
+        }
+
+        .cloud-layer-2 {
+            position: absolute;
+            bottom: -20%;
+            left: -30%;
+            width: 180%;
+            height: 80%;
+            background: radial-gradient(ellipse at center, rgba(210, 225, 215, 0.2) 0%, rgba(255, 255, 255, 0.06) 45%, transparent 70%);
+            pointer-events: none;
+            mix-blend-mode: screen;
+            animation: driftClouds2 25s linear infinite reverse;
+        }
+
+        @keyframes driftClouds1 {
+            0% { transform: translateX(0) translateY(0); }
+            50% { transform: translateX(20%) translateY(-5px); }
+            100% { transform: translateX(0) translateY(0); }
+        }
+
+        @keyframes driftClouds2 {
+            0% { transform: translateX(0) translateY(0); }
+            50% { transform: translateX(-15%) translateY(10px); }
+            100% { transform: translateX(0) translateY(0); }
+        }
+
+        /* About Section Background */
+        .about-bg-section {
+            position: relative;
+            background-color: #132219;
+            background-image: 
+                linear-gradient(to bottom, rgba(239, 235, 224, 0.92), rgba(239, 235, 224, 0.88)),
+                url('profile.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Article Card Hover Effects */
+        .blog-card {
+            background-color: #FAF8F4;
+            border: 1px solid #E2DDD0;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+        }
+        .blog-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 32px -8px rgba(19, 34, 25, 0.12);
+            border-color: #B8933E;
+        }
+    </style>
+</head>
+<body class="selection:bg-gold/30 selection:text-forest">
+
+<header class="w-full absolute top-0 left-0 z-50 pt-8 pb-4 px-8 lg:px-20">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+        <!-- BRAND -->
+        <a href="index.html" class="flex items-center space-x-3.5 group">
+            <div class="w-9 h-9 rounded-full border border-white/30 flex items-center justify-center text-white/90 group-hover:border-gold transition-colors">
+                <svg class="w-4 h-4 text-gold" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8m0 0C9.5 13 4 10.5 4 6c0 0 3.5 0 8 5m0 2c2.5 0 8-2.5 8-7 0 0-3.5 0-8 5"></path>
+                </svg>
+            </div>
+            <div class="flex flex-col">
+                <span class="font-serif text-2xl tracking-wide text-white/95 font-medium group-hover:text-gold transition-colors leading-none">
+                    Dr. Nirmalendu Maiti
+                </span>
+                <span class="text-[9px] sm:text-[10px] tracking-[0.18em] uppercase text-white/60 mt-1 group-hover:text-gold/80 transition-colors whitespace-nowrap">
+                    Mapping Literature, Ecology, and Postcolonial Space
+                </span>
+            </div>
+        </a>
+
+        <!-- DESKTOP NAVIGATION -->
+        <nav class="hidden md:flex items-center space-x-8 text-sm text-white/90 font-sans whitespace-nowrap">
+            <a href="index.html" class="hover:text-gold transition-colors">Home</a>
+            <a href="about.html" class="hover:text-gold transition-colors">About</a>
+            <a href="research_landscape_page.html" class="hover:text-gold transition-colors">Research Landscape</a>
+            <a href="teaching.html" class="hover:text-gold transition-colors">Teaching</a>
+            <a href="reflections.html" class="text-white border-b-2 border-gold pb-0.5 font-medium">Reflections</a>
+            <a href="cv.html" class="hover:text-gold transition-colors">CV</a>
+            <a href="contact.html" class="hover:text-gold transition-colors">Contact</a>
+        </nav>
+
+        <!-- MOBILE MENU BUTTON -->
+        <button id="mobile-menu-btn" class="md:hidden text-white hover:text-gold focus:outline-none p-2" aria-label="Open navigation menu">
+            <i class="fa-solid fa-bars text-xl"></i>
+        </button>
+    </div>
+
+    <!-- MOBILE NAVIGATION -->
+    <div id="mobile-menu" class="hidden md:hidden bg-[#132219]/95 backdrop-blur-md rounded-xl mt-4 p-5 space-y-3 text-sm text-white/90 border border-gold/30 shadow-2xl">
+        <a href="index.html" class="block hover:text-gold">Home</a>
+        <a href="about.html" class="block hover:text-gold">About</a>
+        <a href="research_landscape_page.html" class="block hover:text-gold">Research Landscape</a>
+        <a href="teaching.html" class="block hover:text-gold">Teaching</a>
+        <a href="reflections.html" class="block font-semibold text-gold">Reflections</a>
+        <a href="cv.html" class="block hover:text-gold">CV</a>
+        <a href="contact.html" class="block hover:text-gold">Contact</a>
+    </div>
+</header>    
+
+    <main class="w-full">
+
+        <section class="hero-reflections-banner min-h-[85vh] w-full flex items-center relative pt-36 pb-24 px-8 lg:px-20 overflow-hidden">
+            <div class="cloud-layer-1"></div>
+            <div class="cloud-layer-2"></div>
+
+            <div class="max-w-7xl mx-auto w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 items-center gap-12">
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center space-x-2.5 px-4 py-1.5 rounded-full bg-forest/85 border border-gold/40 text-gold text-xs tracking-widest uppercase font-mono backdrop-blur-sm">
+                        <img src="leaf.jpg" alt="Leaf 1" class="w-4 h-4 rounded-full object-cover">
+                        <span>Personal Blog & Reflective Essays</span>
+                    </div>
+
+                    <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl text-white font-normal leading-[1.1] tracking-tight">
+                        Reflections on Literature, Culture, Place & Space
+                    </h1>
+
+                    <div class="w-20 h-[1.5px] bg-gold my-4"></div>
+
+                    <p class="text-stone-200/95 text-base sm:text-lg max-w-xl leading-relaxed font-light">
+                        A personal repository of thoughts, musings, and critical essays exploring the intersections of environment, geography, and literary culture.
+                    </p>
+
+                    <div class="pt-4 flex flex-wrap gap-4">
+                        <a href="#articles" class="inline-flex items-center space-x-2 px-6 py-3 rounded-full bg-gold text-forest font-semibold text-xs tracking-wider uppercase hover:bg-gold-bright transition-all duration-300 shadow-xl">
+                            <span>Read Recent Blog Posts</span>
+                            <i class="fa-solid fa-arrow-down text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 relative flex items-center justify-center">
+                    <div class="absolute -top-6 -right-6 z-20 w-16 h-16 rounded-full overflow-hidden border-2 border-gold shadow-xl hidden sm:block">
+                        <img src="leaf 2.jpg" alt="Leaf 2" class="w-full h-full object-cover">
+                    </div>
+                    <div class="cloud-fade-container relative w-full max-w-lg p-4">
+                        <div class="transform hover:scale-[1.02] transition-transform duration-700 bg-[#FAF8F4]/95 p-3 rounded-2xl shadow-2xl border border-gold/40">
+                            <img src="jim-corbett.png" alt="Jim Corbett Artwork" class="w-full h-auto rounded-xl object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="articles" class="py-20 px-6 sm:px-12 lg:px-20 bg-[#F4F0E8] border-t border-[#E2DDD0]">
+            <div class="max-w-6xl mx-auto space-y-12">
+                
+                <div class="space-y-2 text-center md:text-left">
+                    <span class="text-[11px] font-sans uppercase tracking-[0.25em] text-[#B8933E] font-bold block">
+                        Blogs &amp; Notes
+                    </span>
+                    <h2 class="font-serif text-4xl sm:text-5xl text-[#1A211C] font-normal tracking-tight">
+                        Reflections
+                    </h2>
+                </div>
+
+                <!-- Articles Grid -->
+                <div id="articles-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Dynamic blog cards rendered here -->
+                </div>
+
+            </div>
+        </section>
+
+        <section id="about-research-cv" class="py-24 px-6 sm:px-12 lg:px-20 bg-[#EFEBE0] border-t border-[#E2DDD0] space-y-24">
+            
+            <!-- SCHOLAR PROFILE -->
+            <div id="about" class="about-bg-section max-w-6xl mx-auto p-8 sm:p-12 rounded-3xl border border-[#E2DDD0] shadow-xl grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="text-[11px] font-sans uppercase tracking-[0.25em] text-[#B8933E] font-bold block">
+                        PROFILE
+                    </span>
+                    <h2 class="font-serif text-4xl sm:text-5xl text-[#1A211C] font-normal tracking-tight">
+                        About Dr. Nirmalendu Maiti
+                    </h2>
+                    <div class="w-16 h-[1.5px] bg-[#B8933E]"></div>
+                    <p class="text-xs text-[#5A625C] font-mono">
+                        Department of English · Mahishadal Raj College
+                    </p>
+                </div>
+                <div class="lg:col-span-7 bg-[#FAF8F4]/95 backdrop-blur-sm p-8 sm:p-10 rounded-3xl border border-[#E2DDD0] shadow-xl space-y-4 text-sm text-[#2C3530] font-light leading-relaxed">
+                    <p>
+                        I am an educator in the Department of English at <strong>Mahishadal Raj College</strong> (Affiliated to Vidyasagar University, West Bengal). My scholarly inquiries gravitate around the intersections of postcolonial studies, environmental humanities, tribal encounters, and spatial studies.
+                    </p>
+                    <p>
+                        Through my teaching and writing, I strive to examine how literature records the delicate dialogue between human communities, contested territories, and changing environmental landscapes.
+                    </p>
+                </div>
+            </div>
+
+            <!-- THEMATIC INQUIRIES -->
+            <div id="research" class="max-w-6xl mx-auto space-y-10">
+                <div class="text-center max-w-3xl mx-auto space-y-3">
+                    <span class="text-[11px] font-sans uppercase tracking-[0.25em] text-[#B8933E] font-bold block">
+                        THEMATIC INQUIRIES
+                    </span>
+                    <h2 class="font-serif text-4xl sm:text-5xl text-[#1A211C] font-normal tracking-tight">
+                        Research Landscape
+                    </h2>
+                    <p class="text-[#5A625C] text-sm font-light">
+                        Core areas of critical investigation spanning spatial theory and environmental literature.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-[#FAF8F4] p-8 rounded-2xl border border-[#E2DDD0] space-y-4 shadow-md">
+                        <div class="w-10 h-10 rounded-xl bg-[#132219] text-[#B8933E] flex items-center justify-center font-serif text-lg">01</div>
+                        <h3 class="font-serif text-xl text-[#1A211C] font-semibold">Ecocriticism</h3>
+                        <p class="text-xs text-[#5A625C] leading-relaxed font-light">
+                            Exploring representation of different eco-geographical spaces in postcolonial fiction.
+                        </p>
+                    </div>
+
+                    <div class="bg-[#FAF8F4] p-8 rounded-2xl border border-[#E2DDD0] space-y-4 shadow-md">
+                        <div class="w-10 h-10 rounded-xl bg-[#132219] text-[#B8933E] flex items-center justify-center font-serif text-lg">02</div>
+                        <h3 class="font-serif text-xl text-[#1A211C] font-semibold">Spatial Humanities</h3>
+                        <p class="text-xs text-[#5A625C] leading-relaxed font-light">
+                            Analysing different kinds of environmental, geographical, and cultural spaces in literary imagination
+                        </p>
+                    </div>
+
+                    <div class="bg-[#FAF8F4] p-8 rounded-2xl border border-[#E2DDD0] space-y-4 shadow-md">
+                        <div class="w-10 h-10 rounded-xl bg-[#132219] text-[#B8933E] flex items-center justify-center font-serif text-lg">03</div>
+                        <h3 class="font-serif text-xl text-[#1A211C] font-semibold">Tribal Encounters & Postcoloniality</h3>
+                        <p class="text-xs text-[#5A625C] leading-relaxed font-light">
+                            Examining indigenous lore, subaltern silences, and the historical friction between imperial forestry and forest dwellers.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <div id="article-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 hidden">
+        <div class="absolute inset-0 bg-black/75 backdrop-blur-sm" onclick="closeArticleModal()"></div>
+        <div class="relative bg-[#FAF8F4] border border-[#B8933E] rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-10 shadow-2xl space-y-6">
+            <div class="flex items-center justify-between border-b border-[#E2DDD0] pb-4">
+                <span id="modal-date" class="text-xs font-mono text-[#5A625C]">Date</span>
+                <button onclick="closeArticleModal()" class="text-[#5A625C] hover:text-[#1A211C] text-xl p-2 transition-colors">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Modal Image Header -->
+            <div class="w-full h-64 sm:h-80 rounded-2xl overflow-hidden border border-[#E2DDD0]">
+                <img id="modal-image" src="" alt="Article Banner" class="w-full h-full object-cover">
+            </div>
+
+            <h2 id="modal-title" class="font-serif text-2xl sm:text-4xl text-[#1A211C] font-semibold leading-tight">
+                Title
+            </h2>
+
+            <div id="modal-body" class="text-[#2C3530] text-sm leading-relaxed space-y-4 font-light">
+                <!-- Content injected dynamically -->
+            </div>
+
+            <div id="modal-share" class="pt-4 border-t border-[#E2DDD0] flex items-center justify-between">
+                <div class="flex items-center space-x-3 text-xs text-[#5A625C]">
+                    <span class="font-semibold uppercase tracking-wider text-[10px]">Share:</span>
+                    <a id="share-modal-wa" href="#" target="_blank" rel="noopener noreferrer" class="hover:text-[#25D366] transition-colors p-1" title="Share on WhatsApp">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                    </a>
+                    <a id="share-modal-gmail" href="#" target="_blank" rel="noopener noreferrer" class="hover:text-[#EA4335] transition-colors p-1" title="Share via Gmail">
+                        <i class="fa-regular fa-envelope text-lg"></i>
+                    </a>
+                    <a id="share-modal-x" href="#" target="_blank" rel="noopener noreferrer" class="hover:text-black transition-colors p-1" title="Share on X">
+                        <i class="fa-brands fa-x-twitter text-lg"></i>
+                    </a>
+                    <a id="share-modal-fb" href="#" target="_blank" rel="noopener noreferrer" class="hover:text-[#1877F2] transition-colors p-1" title="Share on Facebook">
+                        <i class="fa-brands fa-facebook text-lg"></i>
+                    </a>
+                </div>
+
+                <button onclick="closeArticleModal()" class="px-6 py-2.5 rounded-full bg-[#132219] text-white text-xs tracking-wider uppercase font-semibold hover:bg-[#B8933E] hover:text-[#132219] transition-colors">
+                    Close Post
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-[#0C1711] text-stone-200 px-6 sm:px-12 lg:px-20 py-12">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8">
+                <!-- FOOTER BRAND -->
+                <div class="md:col-span-5">
+                    <a href="index.html" class="inline-flex items-center space-x-3 group">
+                        <div class="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center group-hover:border-[#B8933E] transition-colors">
+                            <svg class="w-4 h-4 text-[#B8933E]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8m0 0C9.5 13 4 10.5 4 6c0 0 3.5 0 8 5m0 2c2.5 0 8-2.5 8-7 0 0-3.5 0-8 5"></path>
+                            </svg>
+                        </div>
+                        <span class="font-serif text-2xl text-white group-hover:text-[#B8933E] transition-colors">
+                            Dr. Nirmalendu Maiti
+                        </span>
+                    </a>
+                    <p class="text-xs text-stone-300 leading-relaxed max-w-sm mt-5">
+                        Mapping literature, ecology, and postcolonial space through interdisciplinary research, teaching, and critical inquiry.
+                    </p>
+                </div>
+
+                <!-- FOOTER NAVIGATION -->
+                <div class="md:col-span-3">
+                    <h3 class="text-[10px] uppercase tracking-[0.2em] text-[#B8933E] font-semibold mb-5">
+                        Navigate
+                    </h3>
+                    <div class="grid grid-cols-2 gap-y-3 gap-x-5 text-xs">
+                        <a href="index.html" class="text-stone-300 hover:text-[#B8933E] transition-colors">Home</a>
+                        <a href="about.html" class="text-stone-300 hover:text-[#B8933E] transition-colors">About</a>
+                        <a href="research_landscape_page.html" class="text-stone-300 hover:text-[#B8933E] transition-colors">Research</a>
+                        <a href="teaching.html" class="text-stone-300 hover:text-[#B8933E] transition-colors">Teaching</a>
+                        <a href="reflections.html" class="text-stone-300 hover:text-[#B8933E] transition-colors">Reflections</a>
+                        <a href="cv.html" class="text-stone-300 hover:text-[#B8933E] transition-colors">CV</a>
+                        <a href="contact.html" class="text-stone-300 hover:text-[#B8933E] transition-colors">Contact</a>
+                    </div>
+                </div>
+
+                <!-- FOOTER CONTACT -->
+                <div class="md:col-span-4">
+                    <h3 class="text-[10px] uppercase tracking-[0.2em] text-[#B8933E] font-semibold mb-5">
+                        Contact
+                    </h3>
+                    <div class="space-y-3 text-xs">
+                        <a href="mailto:nirmalendu09maiti@gmail.com" class="flex items-center space-x-3 text-stone-300 hover:text-[#B8933E] transition-colors">
+                            <i class="fa-regular fa-envelope w-4"></i>
+                            <span>nirmalendu09maiti@gmail.com</span>
+                        </a>
+                        <a href="contact.html" class="flex items-center space-x-3 text-stone-300 hover:text-[#B8933E] transition-colors">
+                            <i class="fa-solid fa-location-dot w-4"></i>
+                            <span>Academic Profile & Contact Information</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COPYRIGHT -->
+            <div class="border-t border-white/15 mt-10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-[10px] text-stone-300">
+                <span>
+                    © 2026 Nirmalendu Maiti. All rights reserved. | Visitors: <span id="visitor-count" class="text-[#B8933E] font-semibold">1</span>
+                </span>
+                <span>
+                    Literature · Ecology · Postcolonial Space
+                </span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const blogPosts = [
+            {
+                id: "post-1",
+                date: "2026-10-22",
+                formattedDate: "October 22, 2026",
+                title: "Understanding the Andamans: Colonial and Postcolonial Encounters",
+                image: "jarawa.png",
+                snippet: "What exactly comes to mind when we hear the word ‘Andaman’? The Cellular Jail, the atrocities and inhuman torture inflicted upon freedom fighters, kala pani, and Netaji Subhas Chandra Bose’s visit to the islands during the Second World War? Yet these islands are more than reflective spaces for remembering the Indian freedom movement.",
+                content: `
+                    <p>What exactly comes to mind when we hear the word ‘Andaman’? The Cellular Jail, the atrocities and inhuman torture inflicted upon freedom fighters, <em>kala pani</em>, and Netaji Subhas Chandra Bose’s visit to the islands during the Second World War? Yet these islands are more than reflective spaces for remembering the Indian freedom movement. Travel enthusiasts and popular vloggers might also speak of their ‘exotic landscapes’—turquoise waters, coral reefs, and even images of Jarawa people, sometimes barely clothed and holding weapons, presented as if they were ‘welcoming’ tourist groups passing through the forest. These are fragmented, and sometimes distorted, perceptions of a place with a vulnerable ecology, a tense history, and a complex social reality.</p>
+                    <p>The islands have long been home to distinctive endemic species and Indigenous human populations. The principal Indigenous communities of the Andaman Islands—the Great Andamanese, the Jarawa, the Onge, and the Sentinelese—have inhabited the archipelago since prehistoric times. The precise circumstances and chronology of their ancestors’ arrival remain uncertain. Some scholarly accounts suggest that their ancestors reached the islands during prehistoric migrations from mainland Asia, possibly when lower sea levels made parts of the region more accessible. Over time, geographical isolation contributed to the development of distinct communities, languages, and cultural practices. These communities developed their own relationships with the islands’ fragile ecological environments long before the arrival of British colonial authorities. Their histories, however, cannot be reduced to a single narrative of isolation, as their experiences of contact with outsiders have differed considerably.</p>
+                    <p>In 1789, Lieutenant Archibald Blair, working for the British East India Company, surveyed the islands and established a settlement at Port Cornwallis in the Andamans. The settlement involved clearing land and establishing a British foothold in the archipelago. However, it did not survive for long and was abandoned in 1796. Following the Great Rebellion of 1857, the British decided to establish a penal settlement in the islands. On 10 March 1858, the first batch of approximately 200 prisoners arrived at Chatham Island, near Port Blair. Many prisoners were compelled to undertake arduous labour, including clearing forests and constructing settlements. The infamous Cellular Jail was completed in 1906. Among the first political prisoners sent to the newly constructed jail were revolutionaries convicted in the Alipore Bomb Case. Their memoirs and autobiographical accounts remain valuable historical documents recording the brutal conditions of imprisonment and the inhuman treatment inflicted upon them by colonial authorities, including the jail administration under David Barry, the Superintendent of the Cellular Jail.</p>
+                    <p>Over time, the British also permitted and organised the settlement of non-political convicts and other people in the islands. Some convicts married fellow prisoners, sometimes crossing religious and caste boundaries that structured social life on the mainland. Their descendants became part of what came to be known as the ‘local-born’ population, whose histories and identities are deeply connected with the islands. The emergence of these communities added another dimension to the changing social geography of the Andamans, where Indigenous inhabitants, transported prisoners, and later settlers came to occupy different positions within the colonial and postcolonial order.</p>
+                    <p>For the British, Indigenous communities who resisted colonial intrusion were often perceived as obstacles to settlement and territorial control. The islands’ geographical isolation also made them attractive as a penal destination, while their forests offered valuable timber for colonial extraction. Colonial authorities frequently treated Indigenous people as subjects to be controlled, studied, or assimilated rather than as communities with their own territorial rights and systems of knowledge. On 17 May 1859, the Battle of Aberdeen took place between the British and Indigenous Andamanese, although historical accounts differ over the precise date. The conflict represented a significant episode in Indigenous resistance to colonial expansion. The consequences of colonial contact extended beyond armed conflict: violence, displacement, introduced diseases, and disruption of traditional lifeways contributed to the catastrophic decline of several Indigenous communities.</p>
+                    <p>After independence, the relationship between the islands, their forests, and their inhabitants continued to change. Although measures were introduced to protect Indigenous communities and their territories, these did not bring an end to the pressures associated with settlement and resource extraction. In 1952, the Andaman Canopy Lifting Shelterwood System became part of postcolonial forest management. Presented as a method of managing and regenerating forests, the system also remained connected to the commercial utilisation of timber. Its history raises questions about the extent to which postcolonial forest management departed from, or continued, the extractive priorities of colonial forestry.</p>
+                    <p>The history of contact with the Jarawa offers another perspective on these contradictions. Government initiatives to establish contact with the community included the distribution of gifts such as coconuts, fruits, and clothing. Although such initiatives were often presented as attempts at communication, they also reflected assumptions about the desirability of bringing Indigenous communities into closer contact with the outside world. The expansion of the Andaman Trunk Road subsequently brought a growing flow of outsiders through areas associated with the Jarawa Reserve. Connecting settlements across the islands, the road facilitated transport and movement but also intensified the risks of intrusion into Indigenous territory. The practice of ‘human safaris’, in which tourists seek to observe Jarawa people along the road, illustrates how Indigenous lives can become objects of curiosity and consumption. What is described as a modern amenity for some may therefore represent an intrusion into the lives and autonomy of others.</p>
+                    <p>The Indian Ocean tsunami of 2004 and the COVID-19 pandemic of 2020 brought further attention to the vulnerabilities of island communities. The effects of these events varied across communities and locations, but both exposed the importance of understanding the relationship between geographical isolation, access to essential services, ecological conditions, and human vulnerability. For Indigenous communities, particularly those with limited contact with outside populations, public health interventions must also take account of the risks associated with introducing unfamiliar diseases. Such circumstances remind us that vulnerability is not simply a consequence of island geography; it is also shaped by the ways institutions respond to the needs, rights, and circumstances of different communities.</p>
+                    <p>Today, as the government pursues plans to develop the islands as strategic maritime locations and expand infrastructure, questions about ecological integrity and Indigenous rights have become increasingly urgent. Large-scale development proposals, particularly those concerning Great Nicobar, have prompted debate over forest diversion, biodiversity, coastal ecosystems, and the rights of Indigenous communities. At the same time, many residents seek improved transport, healthcare, education, employment, and other facilities that connect them with opportunities available on the mainland. These aspirations should not be dismissed, just as the environmental and social costs of development should not be overlooked. The challenge lies in understanding how development might address human needs without undermining the ecological systems and cultural relationships that sustain life in the archipelago.</p>
+                    <p>The question, therefore, remains open: whose islands will the Andamans become? And how can their ecological integrity be sustained amid competing claims to territory, development, and belonging?</p>
+                    <p><strong>N.B.: <em>My first encounter with the Andamans may have been through a detective story by Sunil Gangopadhyay,</em> Sabuj Dwiper Raja<em>. My academic interest in these islands grew while I was working as a Research Associate on an ICSSR-funded project examining the memoirs of Indian freedom fighters imprisoned in the Cellular Jail. As part of this research, I visited the islands in 2018. I remember seeing the Jarawa Reserve Forest, a young Jarawa man wearing a red T-shirt and standing beside his motorbike, and experiencing the religious and cultural fluidity that characterises aspects of island life. Yet much of my understanding of the Andamans has developed through reading, particularly Pankaj Sekhsaria’s</em> The Last Wave<em>, which also served as one of the case studies in my PhD thesis. These encounters, both personal and academic, have encouraged me to look beyond familiar representations of the islands and to consider the complex relationships between colonial history, ecological vulnerability, Indigenous lives, and the question of belonging.</em></p></strong>
+                `
+            },
+            {
+                id: "post-2",
+                date: "2026-07-23",
+                formattedDate: "July 23, 2026",
+                title: "Bern: A City of Bears, Clocks, and the Quietness of the Aare",
+                image: "bern_2.jpg",
+                snippet: "Bern is Switzerland’s de facto capital. “But why bears?” That was exactly what I asked one of the scholars I met at the university during the conference.",
+                content: `
+                    <p>Bern is Switzerland’s de facto capital. An interesting fact about the country is that, although it has various cantons and regions, it does not officially designate a capital city in the conventional sense. I visited Bern in August 2023 to present a paper on Stephen Alter’s <em>In the Jungles of the Night</em>. Like many European cities, Bern has a city centre that preserves its medieval character, surrounded by more modern urban development. Yet Bern has a uniqueness of its own: its characteristic quietness. Unlike Milan, Paris, or even Zurich, Bern is calm and less crowded, as if the bustle of life gives way to a meditative quietness. In the middle of the medieval town stands its iconic clock tower, the Zytglogge (pronounced <em>tsit-gloh-geh</em>). The beautiful River Aare flows around the city, and beside its turquoise waters lies a park where bears roam within an enclosed space.</p>
+                    <p>“But why bears?” That was exactly what I asked one of the scholars I met at the university during the conference. Being Swiss, he seemed confident about the answer. He explained that, according to tradition, Berchtold V, Duke of Zähringen, who founded Bern in 1191, decided to name the settlement after the first animal he encountered during a hunt. The animal was said to be a bear, and Bär is the German word for bear. Whether legend or historical fact, the bear became the city’s emblem. Its presence can still be seen in Bern’s flags, fountains, and public spaces. I was delighted to learn this story.</p>
+                    <p>During my stay in Bern, Professor Christian Rohr of the University of Bern kindly organised a walking tour from the conference venue to the Swiss Alpine Museum. We were scheduled to have a mini-workshop at the museum, and Professor Rohr suggested that walking would be a better way to explore the city than taking a bus. Our group of ten or twelve people agreed. We walked past a paved open space dotted with fountains shooting jets of water into the air, while children played around them. The professor explained that beneath this seemingly ordinary public space lay a secure facility associated with the Swiss banking system. I was thrilled to learn this supposed ‘secret’ and was reminded of the popular Netflix series <em>Money Heist</em>.</p>
+                    <p>The Swiss Alpine Museum was unlike any museum I had visited before. What particularly attracted my attention was the section on Mitholz. I learnt that Mitholz was an ordinary Swiss village where a massive quantity of explosives, stored by the Swiss military during the Second World War, had been buried beneath the ground. The danger posed by these explosives led to plans for the evacuation and relocation of villagers. Their memories of home were preserved in the museum. Near the entrance, a large section of a tree’s root system hung above the visitors. We were told that it came from the village and symbolised the experience of being uprooted. Before leaving their homes, the villagers had recorded the sounds of their village, from the roads to the surrounding natural environment. In one corner of a room stood several pots. We were invited to open their lids and experience the smells associated with the kitchens of the village. It was a wonderful experience.</p>
+                    <p>On the day of my presentation, I was a little worried, but everything went as it should. After the presentation, Antara, who had also participated in the conference, and I decided to walk towards the Aare. We sat on its bank, dipping our legs into the clear water. We watched people floating downstream and swimming in the river. I already knew that swimming and floating down the Aare were popular summer activities in Bern, and I shared this with Antara. She was excited to learn about it, but I was less enthusiastic. After all, she knew how to swim, whereas I did not. I asked her whether she wanted to take part in this Swiss summer tradition. She declined, although she did not explain why. I can only guess that even in the height of Bern’s summer, the river’s chilling water might have dampened her enthusiasm.</p>
+                `
+            },
+            {
+                id: "post-3",
+                date: "2026-06-12",
+                formattedDate: "June 12, 2026",
+                title: "Jim Corbett: Between the Hunter and the Naturalist",
+                image: "jim-corbett.png",
+                snippet: "How many Indians have never heard the name of Jim Corbett? I am not sure about children of the present generation, but when I was a child, we did not have Marvel superheroes or smartphones. Instead, we grew up listening to tales of Jim Corbett, man-eaters, and the struggles of villagers in Garhwal and Kumaon.",
+                content: `
+                    <p>How many Indians have never heard the name of Jim Corbett? I am not sure about children of the present generation, but when I was a child, we did not have Marvel superheroes or smartphones. Instead, we grew up listening to tales of Jim Corbett, man-eaters, and the struggles of villagers in Garhwal and Kumaon.</p>
+                    <p>Edward James “Jim” Corbett (1875–1955) was a British-Indian hunter, naturalist, writer, and conservationist who spent much of his life in the Kumaon region of the Himalayas. He became famous for tracking and killing man-eating tigers and leopards that threatened local communities. His accounts of these encounters, particularly in <em>The Man-Eaters of Kumaon</em> (1944), established his reputation as a remarkable observer of wildlife and forest life.</p>
+                    <p>Yet Corbett’s relationship with the forest extended beyond hunting. His intimate knowledge of animal behaviour gradually informed his advocacy for wildlife protection. He recognised that indiscriminate hunting and the destruction of natural habitats threatened the very wildlife he had spent years studying. His later writings and interest in wildlife photography reflected a growing commitment to observing animals in their natural habitats rather than killing them.</p>
+                    <p>Corbett also played an important role in the establishment of Hailey National Park in 1936, now known as Jim Corbett National Park. Drawing on his extensive knowledge of the region, he assisted in demarcating the proposed park, which became India’s first national park. Corbett’s legacy, therefore, rests on a complex transition from hunter to conservationist. But how many of us know him as a wildlife photographer?</p>
+                    <p>Inspired partly by the wildlife photographs of fellow naturalist F. W. Champion, Corbett gradually turned from the rifle towards the camera, seeking to capture wild animals in their natural habitats. He experimented with still photography and motion-picture filming, becoming one of the early filmmakers to document tigers in the wild. For Corbett, the camera offered an alternative to trophy hunting: it could preserve an encounter with wildlife without killing the animal. His transition was not simply from hunter to photographer, but towards becoming a conservationist who believed that observing and appreciating wildlife could help protect it.</p>
+                    <p>Foregrounding this transformation from ‘shooting’ with a rifle to ‘shooting’ with a camera, Stephen Alter offers a fictionalised account of Corbett’s life in <em>In the Jungles of the Night</em> (2016). The novel was also one of the case studies in my PhD dissertation.</p>
+                `
+            }
+        ];
+
+        // RENDER CARDS IN REVERSE CHRONOLOGICAL ORDER WITH SOCIAL SHARE OPTIONS
+        function renderBlogCards() {
+            const grid = document.getElementById('articles-grid');
+            if (!grid) return;
+
+            // Sort reverse chronologically by date
+            const sortedPosts = [...blogPosts].sort((a, b) => new Date(b.date) - new Date(a.date));
+
+            grid.innerHTML = sortedPosts.map(post => {
+                const currentUrl = encodeURIComponent(window.location.href);
+                const shareTitle = encodeURIComponent(post.title);
+                const shareText = encodeURIComponent(`Check out this article: ${post.title}`);
+                const waUrl = `https://api.whatsapp.com/send?text=${shareText}%20${currentUrl}`;
+                const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&su=${shareTitle}&body=${shareText}%0A%0A${currentUrl}`;
+                const xUrl = `https://twitter.com/intent/tweet?text=${shareTitle}&url=${currentUrl}`;
+                const fbUrl = `https://www.facebook.com/sharer/sharer.php?u=${currentUrl}`;
+
+                return `
+                <div class="blog-card rounded-2xl overflow-hidden flex flex-col justify-between space-y-4">
+                    <div onclick="openArticleModal('${post.id}')" class="h-48 w-full overflow-hidden bg-[#132219]">
+                        <img src="${post.image}" alt="${post.title}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6 pt-2 space-y-3 flex-1 flex flex-col justify-between">
+                        <div onclick="openArticleModal('${post.id}')" class="space-y-3">
+                            <span class="text-xs font-mono text-[#5A625C] block">${post.formattedDate}</span>
+                            <h3 class="font-serif text-xl text-[#1A211C] font-semibold leading-snug">
+                                ${post.title}
+                            </h3>
+                            <p class="text-xs text-[#5A625C] leading-relaxed font-light line-clamp-3">
+                                ${post.snippet}
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-[#E2DDD0] flex items-center justify-between text-xs font-semibold text-[#132219]">
+                            <span onclick="openArticleModal('${post.id}')" class="group-hover:text-[#B8933E] flex items-center space-x-1.5 cursor-pointer">
+                                <span>Read Full Post</span>
+                                <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                            </span>
+
+                            <!-- SOCIAL SHARE BUTTONS -->
+                            <div class="flex items-center space-x-2.5 text-[#5A625C] text-sm">
+                                <a href="${waUrl}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();" class="hover:text-[#25D366] transition-colors" title="Share on WhatsApp">
+                                    <i class="fa-brands fa-whatsapp"></i>
+                                </a>
+                                <a href="${gmailUrl}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();" class="hover:text-[#EA4335] transition-colors" title="Share via Gmail">
+                                    <i class="fa-regular fa-envelope"></i>
+                                </a>
+                                <a href="${xUrl}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();" class="hover:text-black transition-colors" title="Share on X">
+                                    <i class="fa-brands fa-x-twitter"></i>
+                                </a>
+                                <a href="${fbUrl}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();" class="hover:text-[#1877F2] transition-colors" title="Share on Facebook">
+                                    <i class="fa-brands fa-facebook"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            }).join('');
+        }
+
+        // MODAL FUNCTIONS
+        function openArticleModal(id) {
+            const post = blogPosts.find(p => p.id === id);
+            if (!post) return;
+
+            document.getElementById('modal-title').textContent = post.title;
+            document.getElementById('modal-date').textContent = post.formattedDate;
+            document.getElementById('modal-image').src = post.image;
+            document.getElementById('modal-body').innerHTML = post.content;
+
+            // Setup share links inside modal
+            const currentUrl = encodeURIComponent(window.location.href);
+            const shareTitle = encodeURIComponent(post.title);
+            const shareText = encodeURIComponent(`Check out this article: ${post.title}`);
+
+            document.getElementById('share-modal-wa').href = `https://api.whatsapp.com/send?text=${shareText}%20${currentUrl}`;
+            document.getElementById('share-modal-gmail').href = `https://mail.google.com/mail/?view=cm&fs=1&su=${shareTitle}&body=${shareText}%0A%0A${currentUrl}`;
+            document.getElementById('share-modal-x').href = `https://twitter.com/intent/tweet?text=${shareTitle}&url=${currentUrl}`;
+            document.getElementById('share-modal-fb').href = `https://www.facebook.com/sharer/sharer.php?u=${currentUrl}`;
+
+            const modal = document.getElementById('article-modal');
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeArticleModal() {
+            const modal = document.getElementById('article-modal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // INITIALIZE ON LOAD
+        document.addEventListener('DOMContentLoaded', () => {
+            renderBlogCards();
+        });
+
+        // VISITOR COUNTER
+        try {
+            let visits = localStorage.getItem('nirmalendu_site_visits');
+            if (!visits) {
+                visits = 1240;
+            } else {
+                visits = parseInt(visits, 10) + 1;
+            }
+            localStorage.setItem('nirmalendu_site_visits', visits);
+            document.getElementById('visitor-count').textContent = visits.toLocaleString();
+        } catch (e) {
+            document.getElementById('visitor-count').textContent = '1,240';
+        }
+
+        // MOBILE NAVIGATION
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', function () {
+                mobileMenu.classList.toggle('hidden');
+                const icon = mobileMenuBtn.querySelector('i');
+                if (mobileMenu.classList.contains('hidden')) {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                    mobileMenuBtn.setAttribute('aria-label', 'Open navigation menu');
+                } else {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-xmark');
+                    mobileMenuBtn.setAttribute('aria-label', 'Close navigation menu');
+                }
+            });
+
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(function (link) {
+                link.addEventListener('click', function () {
+                    mobileMenu.classList.add('hidden');
+                    const icon = mobileMenuBtn.querySelector('i');
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                    mobileMenuBtn.setAttribute('aria-label', 'Open navigation menu');
+                });
+            });
+        }
+
+        window.addEventListener('resize', function () {
+            if (window.innerWidth >= 768 && mobileMenu) {
+                mobileMenu.classList.add('hidden');
+                if (mobileMenuBtn) {
+                    const icon = mobileMenuBtn.querySelector('i');
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                    mobileMenuBtn.setAttribute('aria-label', 'Open navigation menu');
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curriculum Vitae – Nirmalendu Maiti</title>
+    <meta name="description" content="Official Academic Curriculum Vitae of Dr. Nirmalendu Maiti - State Aided College Teacher in English, Mahishadal Raj College.">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Cormorant Garamond, Fraunces & Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+                        body: ['"Fraunces"', 'Georgia', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        parchment: {
+                            DEFAULT: '#F4F0E8',
+                            light: '#FAF8F4',
+                            dark: '#EAE5DA',
+                            border: '#E2DDD0',
+                        },
+                        forest: {
+                            DEFAULT: '#132219',
+                            hover: '#0C1711',
+                            muted: '#2D3E33',
+                        },
+                        gold: {
+                            DEFAULT: '#B8933E',
+                            muted: '#96762E',
+                            bright: '#C29B38',
+                        },
+                        ink: {
+                            heading: '#1A211C',
+                            text: '#2C3530',
+                            muted: '#5A625C',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #F4F0E8;
+            color: #2C3530;
+            font-family: 'Fraunces', Georgia, serif;
+            overflow-x: hidden;
+        }
+
+        /* Global Washout Background using cv-hero.png */
+        .body-washout-bg {
+            position: relative;
+            background-image: 
+                linear-gradient(to bottom, rgba(244, 240, 232, 0.94), rgba(244, 240, 232, 0.96)),
+                url('cv-hero.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        h1, h2, h3, h4, h5, h6, .font-serif {
+            font-family: 'Cormorant Garamond', Georgia, serif !important;
+        }
+
+        p, span:not(.font-sans):not(.subheading-font), li, blockquote, div {
+            font-family: 'Fraunces', Georgia, serif !important;
+        }
+
+        .subheading-font, .font-sans, span.font-sans, a, button, label, input, textarea, th, td, .font-mono {
+            font-family: 'Montserrat', sans-serif !important;
+        }
+
+        /* Hero Banner using cv-hero.png with refined dark atmospheric gradient */
+        .cv-hero-banner {
+            position: relative;
+            background-color: #111;
+            background-image: 
+                linear-gradient(to right, rgba(10, 18, 14, 0.95) 0%, rgba(10, 18, 14, 0.8) 50%, rgba(10, 18, 14, 0.6) 100%),
+                url('cv-hero.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Hero Custom Typography Accent */
+        .hero-title-styled {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            letter-spacing: -0.02em;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+        }
+
+        /* CV Table & Card Styles */
+        .cv-card {
+            background-color: #FAF8F4;
+            border: 1px solid #E2DDD0;
+            transition: all 0.3s ease;
+        }
+        .cv-card:hover {
+            box-shadow: 0 12px 28px -6px rgba(19, 34, 25, 0.1);
+            border-color: #B8933E;
+        }
+
+        /* Toast Popup */
+        .toast-notice {
+            transform: translateY(120%);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .toast-notice.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+/* Smooth Page Entry */
+
+body {
+    animation: pageFadeIn 0.5s ease-out;
+}
+
+@keyframes pageFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+    </style>
+</head>
+<body class="selection:bg-gold/30 selection:text-forest body-washout-bg">
+
+   <!-- HEADER NAVBAR -->
+<header class="w-full absolute top-0 left-0 z-50 pt-8 pb-4 px-8 lg:px-20">
+
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+
+
+        <!-- BRAND -->
+
+        <a href="index.html"
+           class="flex items-center space-x-3.5 group">
+
+            <div class="w-9 h-9 rounded-full border border-white/30 flex items-center justify-center text-white/90 group-hover:border-gold transition-colors">
+
+                <svg class="w-4 h-4 text-gold"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="1.5"
+                     viewBox="0 0 24 24">
+
+                    <path stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M12 21v-8m0 0C9.5 13 4 10.5 4 6c0 0 3.5 0 8 5m0 2c2.5 0 8-2.5 8-7 0 0-3.5 0-8 5">
+                    </path>
+
+                </svg>
+
+            </div>
+
+
+            <!-- NAME + SUBTITLE -->
+
+            <div class="flex flex-col">
+
+                <span class="font-serif text-2xl tracking-wide text-white font-medium group-hover:text-gold transition-colors leading-none">
+                    Dr. Nirmalendu Maiti
+                </span>
+
+                <span class="text-[9px] sm:text-[10px] tracking-[0.18em] uppercase text-white/70 mt-1 group-hover:text-gold/80 transition-colors whitespace-nowrap">
+                    Mapping Literature, Ecology, and Postcolonial Space
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <!-- DESKTOP NAVIGATION -->
+
+        <nav class="hidden md:flex items-center space-x-8 text-sm text-white/90 font-sans whitespace-nowrap">
+    <a href="index.html"
+       class="hover:text-gold transition-colors whitespace-nowrap">
+        Home
+    </a>
+
+    <a href="index.html#about"
+       class="hover:text-gold transition-colors whitespace-nowrap">
+        About
+    </a>
+
+    <a href="index.html#research"
+       class="hover:text-gold transition-colors whitespace-nowrap">
+        Research Landscape
+    </a>
+
+    <a href="teaching.html"
+       class="hover:text-gold transition-colors whitespace-nowrap">
+        Teaching
+    </a>
+
+    <a href="reflections.html"
+       class="hover:text-gold transition-colors whitespace-nowrap">
+        Reflections
+    </a>
+
+    <a href="cv.html"
+       class="text-white border-b-2 border-gold pb-0.5 font-medium whitespace-nowrap">
+        CV
+    </a>
+
+    <a href="contact.html"
+       class="hover:text-gold transition-colors whitespace-nowrap">
+        Contact
+    </a>
+
+</nav>
+
+        <!-- MOBILE MENU BUTTON -->
+
+        <button id="mobile-menu-btn"
+                class="md:hidden text-white hover:text-gold focus:outline-none p-2"
+                aria-label="Open navigation menu">
+
+            <i class="fa-solid fa-bars text-xl"></i>
+
+        </button>
+
+    </div>
+
+
+    <!-- MOBILE NAVIGATION -->
+
+    <div id="mobile-menu"
+         class="hidden md:hidden bg-[#0C1711]/95 backdrop-blur-md rounded-xl mt-4 p-5 space-y-3 text-sm text-white border border-white/10 shadow-2xl">
+
+
+        <a href="index.html"
+           class="block hover:text-gold">
+
+            Home
+
+        </a>
+
+
+        <a href="about.html"
+           class="block hover:text-gold">
+
+            About
+
+        </a>
+
+
+        <a href="research_landscape_page.html"
+           class="block hover:text-gold">
+
+            Research Landscape
+
+        </a>
+
+
+        <a href="teaching.html"
+           class="block hover:text-gold">
+
+            Teaching
+
+        </a>
+
+
+        <a href="reflections.html"
+           class="block hover:text-gold">
+
+            Reflections
+
+        </a>
+
+
+        <a href="cv.html"
+           class="block font-semibold text-gold">
+
+            CV
+
+        </a>
+
+
+        <a href="contact.html"
+           class="block hover:text-gold">
+
+            Contact
+
+        </a>
+
+    </div>
+
+</header>
+
+    <main class="w-full">
+
+        <!-- HERO SECTION WITH cv-hero.png BACKGROUND -->
+        <section class="cv-hero-banner min-h-[75vh] w-full flex items-center relative pt-36 pb-20 px-8 lg:px-20 overflow-hidden">
+            <div class="max-w-7xl mx-auto w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 items-center gap-12">
+                <div class="lg:col-span-12 space-y-6 max-w-4xl mx-auto text-center">
+                    <div class="inline-flex items-center space-x-2.5 px-4 py-1.5 rounded-full bg-black/70 border border-gold/40 text-gold text-xs tracking-widest uppercase font-mono backdrop-blur-md shadow-lg">
+                        <i class="fa-solid fa-file-lines"></i>
+                        <span>Official Academic Curriculum Vitae</span>
+                    </div>
+
+                    <h1 class="hero-title-styled text-4xl sm:text-6xl md:text-7xl text-white font-light leading-[1.05]">
+                        Dr. Nirmalendu Maiti
+                    </h1>
+
+                    <p class="font-serif italic text-gold text-xl sm:text-2xl font-normal tracking-wide drop-shadow-md">
+                        M.A. (Gold Medalist), PGCTE & PGDTE · PhD
+  		                   </p>
+
+                    <div class="w-24 h-[2px] bg-gradient-to-r from-gold to-gold/20 my-4 mx-auto"></div>
+
+                    <p class="text-stone-200/95 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed font-light tracking-wide">
+                        Department of English (UG & PG), Mahishadal Raj College & Academic Counsellor, Netaji Open University. Specializing in Ecological Humanities, Anglophone Fiction, and Postcolonial Ecocriticism.
+                    </p>
+
+                    <div class="pt-4 flex flex-wrap justify-center gap-4">
+                        <button onclick="downloadCV()" class="inline-flex items-center space-x-2 px-6 py-3 rounded-full bg-gold text-forest font-semibold text-xs tracking-wider uppercase hover:bg-gold-bright transition-all duration-300 shadow-xl">
+                            <i class="fa-solid fa-download"></i>
+                            <span>Download Full CV (PDF)</span>
+                        </button>
+                        <a href="#qualifications" class="inline-flex items-center space-x-2 px-6 py-3 rounded-full bg-black/60 text-stone-100 border border-white/20 font-semibold text-xs tracking-wider uppercase hover:bg-black transition-all duration-300">
+                            <span>Explore Sections</span>
+                            <i class="fa-solid fa-arrow-down text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MAIN CV CONTENT CONTAINER -->
+        <section class="py-20 px-6 sm:px-12 lg:px-20 max-w-6xl mx-auto space-y-16">
+
+            <!-- SHORT BIO-NOTE WITH PROFILE PHOTO -->
+            <div class="cv-card p-8 sm:p-10 rounded-3xl space-y-4 shadow-md">
+                <div class="flex flex-col md:flex-row gap-8 items-center">
+                    <div class="w-32 h-32 sm:w-40 sm:h-40 rounded-2xl overflow-hidden border-2 border-[#B8933E] shadow-lg flex-shrink-0">
+                        <img src="profile.jpg" alt="Nirmalendu Maiti" class="w-full h-full object-cover">
+                    </div>
+                    <div class="space-y-4 flex-grow">
+                        <span class="text-[11px] font-sans uppercase tracking-[0.25em] text-[#B8933E] font-bold block subheading-font">
+                            BIOGRAPHICAL SUMMARY
+                        </span>
+                        <h2 class="font-serif text-3xl text-[#1A211C] font-semibold">Short Bio-Note</h2>
+                        <div class="w-16 h-[1px] bg-[#B8933E]"></div>
+                        <p class="text-sm text-[#2C3530] font-light leading-relaxed">
+                            Dr. Nirmalendu Maiti is a State Aided College Teacher in the Department of English at Mahishadal Raj College. His academic focus is at the intersection of Ecological Humanities and Anglophone Fiction, a topic he has explored in his PhD research at Vidyasagar University. His work delves into critical issues like environmental crises, postcolonial ecocriticism, and the representation of cultural spaces and identities. He also has a strong interest in Postcolonial Indian English Literature and Tribal Literature, contributing to a nuanced understanding of these vital fields through his published papers and conference presentations.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- WORK EXPERIENCE -->
+            <div class="space-y-6">
+                <div class="flex items-center justify-between border-b border-[#E2DDD0] pb-4">
+                    <div>
+                        <span class="text-[11px] font-sans uppercase tracking-[0.25em] text-[#B8933E] font-bold block subheading-font">PROFESSIONAL TIMELINE</span>
+                        <h2 class="font-serif text-3xl text-[#1A211C] font-semibold">Work Experience</h2>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="cv-card p-6 rounded-2xl space-y-3">
+                        <span class="px-2.5 py-0.5 rounded bg-[#132219] text-[#B8933E] text-[10px] font-bold uppercase font-sans">02.08.2016 – 31.12.2019</span>
+                        <h3 class="font-serif text-xl text-[#1A211C] font-semibold">Guest Teacher</h3>
+                        <p class="text-xs text-[#5A625C]">Department of English, Mahishadal Raj College</p>
+                    </div>
+
+                    <!-- Highlighted SACT I Card -->
+                    <div class="cv-card p-6 rounded-2xl space-y-3 border-2 border-gold bg-[#FAF3E0] shadow-lg relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-[#B8933E] text-forest text-[9px] font-bold uppercase px-3 py-1 rounded-bl-xl tracking-wider font-sans">Current Role</div>
+                        <span class="px-2.5 py-0.5 rounded bg-[#132219] text-[#B8933E] text-[10px] font-bold uppercase font-sans">01.01.2020 – Present</span>
+                        <h3 class="font-serif text-xl text-[#1A211C] font-bold">State Aided College Teacher (SACT I)</h3>
+                        <p class="text-xs text-[#2C3530] font-medium">Department of English (UG & PG), Mahishadal Raj College</p>
+                    </div>
+
+                    <div class="cv-card p-6 rounded-2xl space-y-3">
+                        <span class="px-2.5 py-0.5 rounded bg-[#132219] text-[#B8933E] text-[10px] font-bold uppercase font-sans">Nov, 2024 – Present</span>
+                        <h3 class="font-serif text-xl text-[#1A211C] font-semibold">Academic Counsellor</h3>
+                        <p class="text-xs text-[#5A625C]">Department of English, Netaji Open University</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ACADEMIC QUALIFICATIONS -->
+            <div id="qualifications" class="space-y-6">
+                <div class="border-b border-[#E2DDD0] pb-4">
+                    <span class="text-[11px] font-sans uppercase tracking-[0.25em] text-[#B8933E] font-bold block subheading-font">CREDENTIALS</span>
+                    <h2 class="font-serif text-3xl text-[#1A211C] font-semibold">Academic Qualifications</h2>
+                </div>
+
+                <div class="cv-card rounded-2xl overflow-hidden shadow-md">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs text-[#2C3530]">
+                            <thead class="bg-[#132219] text-stone-200 uppercase font-mono text-[11px]">
+                                <tr>
+                                    <th class="p-4 font-sans">Degree</th>
+                                    <th class="p-4 font-sans">University / College / Board</th>
+                                    <th class="p-4 font-sans">Year</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-[#E2DDD0]">
+                                <tr class="hover:bg-[#FAF8F4]/50">
+                                    <td class="p-4 font-semibold text-[#1A211C]">PhD</td>
+                                    <td class="p-4">Vidyasagar University</td>
+                                    <td class="p-4 font-mono font-sans">2026</td>
+                                </tr>
+                                <tr class="hover:bg-[#FAF8F4]/50">
+                                    <td class="p-4 font-semibold text-[#1A211C]">PGDTE [Distance]</td>
+                                    <td class="p-4">English and Foreign Languages University (EFLU), Hyderabad</td>
+                                    <td class="p-4 font-mono font-sans">2021</td>
+                                </tr>
+                                <tr class="hover:bg-[#FAF8F4]/50">
+                                    <td class="p-4 font-semibold text-[#1A211C]">PGCTE [Distance]</td>
+                                    <td class="p-4">English and Foreign Languages University (EFLU), Hyderabad</td>
+                                    <td class="p-4 font-mono font-sans">2018</td>
+                                </tr>
+                                <tr class="hover:bg-[#FAF8F4]/50">
+                                    <td class="p-4 font-semibold text-[#1A211C]">UGC-NET</td>
+                                    <td class="p-4">University Grants Commission</td>
+                                    <td class="p-4 font-mono font-sans">2018</td>
+                                </tr>
+                                <tr class="hover:bg-[#FAF8F4]/50">
+                                    <td class="p-4 font-semibold text-[#1A211C]">Chhattisgarh SET</td>
+                                    <td class="p-4">CG Vyapam & Dept of Higher Education, CG</td>
+                                    <td class="p-4 font-mono font-sans">2018</td>
+                                </tr>
+                                <tr class="hover:bg-[#FAF8F4]/50">
+                                    <td class="p-4 font-semibold text-[#1A211C]">Madhya Pradesh SET</td>
+                                    <td class="p-4">MPPSC</td>
+                                    <td class="p-4 font-mono font-sans">2017</td>
+                                </tr>
+                                <tr class="hover:bg-[#FAF8F4]/50">
+                                    <td class="p-4 font-semibold text-[#1A211C]">M.A. (English) <span class="text-[#B8933E] font-bold">(Gold Medalist)</span></td>
+                                    <td class="p-4">Guru Ghasidas Vishwavidyalaya (A Central University)</td>
+                                    <td class="p-4 font-mono font-sans">2016</td>
+                                </tr>
+                                <tr class="hover:bg-[#FAF8F4]/50">
+                                    <td class="p-4 font-semibold text-[#1A211C]">B.A. (Hons. in English)</td>
+                                    <td class="p-4">Vidyasagar University</td>
+                                    <td class="p-4 font-mono font-sans">2014</td>
+                                </tr>
+                                <tr class="hover:bg-[#FAF8F4]/50">
+                                    <td class="p-4 font-semibold text-[#1A211C]">Higher Secondary</td>
+                                    <td class="p-4">WBCHSE</td>
+                                    <td class="p-4 font-mono font-sans">2011</td>
+                                </tr>
+                                <tr class="hover:bg-[#FAF8F4]/50">
+                                    <td class="p-4 font-semibold text-[#1A211C]">Secondary</td>
+                                    <td class="p-4">WBBSE</td>
+                                    <td class="p-4 font-mono font-sans">2009</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+    <!-- PUBLICATIONS (Scholarly Output) WITH Clean Academic Styling -->
+    <div class="cv-card p-8 sm:p-12 rounded-3xl border border-[#E2DDD0] shadow-xl space-y-8">
+        <div class="border-b border-[#E2DDD0] pb-4">
+            <span class="text-[11px] font-sans uppercase tracking-[0.25em] text-[#B8933E] font-bold block subheading-font">SCHOLARLY OUTPUT</span>
+            <h2 class="font-serif text-3xl text-[#1A211C] font-semibold">Publications (Journals & Edited Books)</h2>
+        </div>
+
+        <div class="space-y-4 text-xs text-[#2C3530]">
+            <div class="bg-[#FAF8F4] p-6 rounded-2xl space-y-2 border border-[#E2DDD0] shadow-sm">
+                <span class="text-[#B8933E] font-mono font-bold subheading-font">2025 · Journal Article</span>
+                <p class="leading-relaxed font-light text-[#2C3530]">
+                    Maiti, Nirmalendu. "Living Garbage and the 'Wasteland' of Edenic Andaman: 'Dumped' Communities and Disrupted Island Eco-space in Pankaj Sekhsaria's The Last Wave." <em>Resistance: A Journal of Radical Environmental Humanities</em>, Volume 12, Numbers 2-3, Spring-Fall 2025, edited by Dr. Sayan Dey, University of Nebraska Press, 2025, pp. 22-44. DOI: <a href="https://doi.org/10.1353/res.2025.a988440" target="_blank" class="underline text-[#B8933E]">10.1353/res.2025.a988440</a>.
+                </p>
+            </div>
+
+            <div class="bg-[#FAF8F4] p-6 rounded-2xl space-y-2 border border-[#E2DDD0] shadow-sm">
+                <span class="text-[#B8933E] font-mono font-bold subheading-font">2023 · Edited Book Chapter</span>
+                <p class="leading-relaxed font-light text-[#2C3530]">
+                    Maiti, Nirmalendu. "Local Natures and Regional Responses: A Psychogeographical Journey of Transforming Himalayan Eco-Space in Kiran Desai's The Inheritance of Loss." <em>Regional Identities: Makers of Regional History, Society, Culture & Literature (Vol IV)</em>, Highbrow Publications, 2023, pp. 145-163.
+                </p>
+            </div>
+
+            <div class="bg-[#FAF8F4] p-6 rounded-2xl space-y-2 border border-[#E2DDD0] shadow-sm">
+                <span class="text-[#B8933E] font-mono font-bold subheading-font">2022 · Edited Book Chapter</span>
+                <p class="leading-relaxed font-light text-[#2C3530]">
+                    De, Asis and Nirmalendu Maiti. "Urbanity and Transformation of Island Life: Jail, Jungle, and the Jarawa in Pankaj Sekhsaria's The Last Wave: An Island Novel." <em>Ecology, Literature, and Culture</em>, Atlantic, 2022, pp. 1-17.
+                </p>
+            </div>
+
+            <div class="bg-[#FAF8F4] p-6 rounded-2xl space-y-2 border border-[#E2DDD0] shadow-sm">
+                <span class="text-[#B8933E] font-mono font-bold subheading-font">2020 · Journal Article</span>
+                <p class="leading-relaxed font-light text-[#2C3530]">
+                    Maiti, Nirmalendu. "Resistance and Resilience: Tribal History and Counter-Narrative in Sanjay Bahadur's Hul: Cry Rebel." <em>LangLit</em>, vol. 7, no. 2, 2020, pp. 149-155.
+                </p>
+            </div>
+
+            <div class="bg-[#FAF8F4] p-6 rounded-2xl space-y-2 border border-[#E2DDD0] shadow-sm">
+                <span class="text-[#B8933E] font-mono font-bold subheading-font">2020 · Edited Book Chapter</span>
+                <p class="leading-relaxed font-light text-[#2C3530]">
+                    De, Asis and Nirmalendu Maiti. "Shadow Lines: The Border, the 'Other', and the Eco-literary in The Hungry Tide and The Great Derangement." <em>Crossing the Shadow Lines: Essays on Amitav Ghosh</em>, QuadRi, 2020, pp. 95-109.
+                </p>
+            </div>
+
+            <div class="bg-[#FAF8F4] p-6 rounded-2xl space-y-2 border border-[#E2DDD0] shadow-sm">
+                <span class="text-[#B8933E] font-mono font-bold subheading-font">2019 · Journal Article</span>
+                <p class="leading-relaxed font-light text-[#2C3530]">
+                    Maiti, Nirmalendu and Asis De. "Exploitation of the Nature and the Transformation of the Wild in Stephen Alter's In the Jungles of the Night." <em>New Academia</em>, vol. VIII, no. II, 2019, pp. 308-318.
+                </p>
+            </div>
+
+            <div class="bg-[#FAF8F4] p-6 rounded-2xl space-y-2 border border-[#E2DDD0] shadow-sm">
+                <span class="text-[#B8933E] font-mono font-bold subheading-font">2019 · Journal Article</span>
+                <p class="leading-relaxed font-light text-[#2C3530]">
+                    Maiti, Nirmalendu and Deepmala Mahato. "The Minion Mountain: Depiction of Life in Ruskin Bond's Roads to Mussoorie." <em>Proceedings of the 37th International Conference on Mountain Literature</em>, Kathmandu: Literary Association of Nepal, 2019, pp. 104-110.
+                </p>
+            </div>
+
+            <div class="bg-[#FAF8F4] p-6 rounded-2xl space-y-2 border border-[#E2DDD0] shadow-sm">
+                <span class="text-[#B8933E] font-mono font-bold subheading-font">2016 · Journal Article</span>
+                <p class="leading-relaxed font-light text-[#2C3530]">
+                    Maiti, Nirmalendu and Joydev Maity. "The Last of Arthur's Knights and a Quest for Living Memories in Kazuo Ishiguro's The Buried Giant." <em>LangLit</em>, vol. 3, no. 1, 2016, pp. 720-725.
+                </p>
+            </div>
+
+            <div class="bg-[#FAF8F4] p-6 rounded-2xl space-y-2 border border-[#E2DDD0] shadow-sm">
+                <span class="text-[#B8933E] font-mono font-bold subheading-font">2015 · Journal Article</span>
+                <p class="leading-relaxed font-light text-[#2C3530]">
+                    Maiti, Nirmalendu and Deepmala Mahato. "Globalization, Woman and Motherhood in Jhumpa Lahiri's 'Mrs. Sen's'." <em>MATS Journal of Arts and Education</em>, vol. 2, no. 1, 2015, pp. 118-121.
+                </p>
+            </div>
+        </div>
+    </div>
+
+            <!-- SEMINARS, CONFERENCES & SYMPOSIA -->
+            <div class="space-y-6">
+                <div class="border-b border-[#E2DDD0] pb-4">
+                    <span class="text-[11px] font-sans uppercase tracking-[0.25em] text-[#B8933E] font-bold block subheading-font">PRESENTATIONS</span>
+                    <h2 class="font-serif text-3xl text-[#1A211C] font-semibold">Seminars / Conferences / Symposia</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs text-[#2C3530]">
+                    <div class="cv-card p-6 rounded-2xl space-y-2">
+                        <span class="font-mono text-[10px] text-[#B8933E] font-bold subheading-font">7-8 March 2024 · International</span>
+                        <h4 class="font-semibold text-[#1A211C] text-sm">Mountain-space and Question of Belonging in Kiran Desai's <em>The Inheritance of Loss</em></h4>
+                        <p class="text-[#5A625C]">Central University of Odisha, Koraput, India</p>
+                    </div>
+
+                    <div class="cv-card p-6 rounded-2xl space-y-2">
+                        <span class="font-mono text-[10px] text-[#B8933E] font-bold subheading-font">30 Jan - 1 Feb 2024</span>
+                        <h4 class="font-semibold text-[#1A211C] text-sm">Bonded Coolies and Sugar Colonies: Homecoming in Reuben Lachmansingh's <em>A Dip at the Sangam</em></h4>
+                        <p class="text-[#5A625C]">University of Lucknow, India</p>
+                    </div>
+
+                    <div class="cv-card p-6 rounded-2xl space-y-2">
+                        <span class="font-mono text-[10px] text-[#B8933E] font-bold subheading-font">22-26 August 2023 · International (Bern)</span>
+                        <h4 class="font-semibold text-[#1A211C] text-sm">Disintegrated Mountains: Colonial Himalaya and Environmental Disjunction in Stephen Alter's <em>In the Jungles of the Night</em></h4>
+                        <p class="text-[#5A625C]">European Society for Environmental History, University of Bern, Switzerland</p>
+                    </div>
+
+                    <div class="cv-card p-6 rounded-2xl space-y-2">
+                        <span class="font-mono text-[10px] text-[#B8933E] font-bold subheading-font">10-12 September 2020 · International (Bhutan)</span>
+                        <h4 class="font-semibold text-[#1A211C] text-sm">Contested Spaces: Transgenerational Attitude towards Nature in Kiran Desai's <em>The Inheritance of Loss</em></h4>
+                        <p class="text-[#5A625C]">Yonphula Centenary College, Royal University of Bhutan</p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+        <footer class="bg-[#0C1711] text-stone-200 px-6 sm:px-12 lg:px-20 py-12">
+            
+            <div class="max-w-7xl mx-auto">
+
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8">
+
+                    <!-- FOOTER BRAND -->
+                    <div class="md:col-span-5">
+                        
+                        <a href="index.html"
+                           class="inline-flex items-center space-x-3 group">
+                            
+                            <div class="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center group-hover:border-[#B8933E] transition-colors">
+                                <svg class="w-4 h-4 text-[#B8933E]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8m0 0C9.5 13 4 10.5 4 6c0 0 3.5 0 8 5m0 2c2.5 0 8-2.5 8-7 0 0-3.5 0-8 5"></path>
+                                </svg>
+                            </div>
+
+                            <span class="font-serif text-2xl text-white group-hover:text-[#B8933E] transition-colors">
+                                Dr. Nirmalendu Maiti
+                            </span>
+
+                        </a>
+
+                        <p class="text-xs text-stone-300 leading-relaxed max-w-sm mt-5">
+                            Mapping literature, ecology, and postcolonial space through interdisciplinary research, teaching, and critical inquiry.
+                        </p>
+
+                    </div>
+
+
+                    <!-- FOOTER NAVIGATION -->
+                    <div class="md:col-span-3">
+                        
+                        <h3 class="text-[10px] uppercase tracking-[0.2em] text-[#B8933E] font-semibold mb-5">
+                            Navigate
+                        </h3>
+
+                        <div class="grid grid-cols-2 gap-y-3 gap-x-5 text-xs">
+
+                            <a href="index.html"
+                               class="text-stone-300 hover:text-[#B8933E] transition-colors">
+                                Home
+                            </a>
+
+                            <a href="about.html"
+                               class="text-stone-300 hover:text-[#B8933E] transition-colors">
+                                About
+                            </a>
+
+                            <a href="research_landscape_page.html"
+                               class="text-stone-300 hover:text-[#B8933E] transition-colors">
+                                Research
+                            </a>
+
+                            <a href="teaching.html"
+                               class="text-stone-300 hover:text-[#B8933E] transition-colors">
+                                Teaching
+                            </a>
+
+                            <a href="reflections.html"
+                               class="text-stone-300 hover:text-[#B8933E] transition-colors">
+                                Reflections
+                            </a>
+
+                            <a href="cv.html"
+                               class="text-stone-300 hover:text-[#B8933E] transition-colors">
+                                CV
+                            </a>
+
+                            <a href="contact.html"
+                               class="text-stone-300 hover:text-[#B8933E] transition-colors">
+                                Contact
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- FOOTER CONTACT -->
+                    <div class="md:col-span-4">
+                        
+                        <h3 class="text-[10px] uppercase tracking-[0.2em] text-[#B8933E] font-semibold mb-5">
+                            Contact
+                        </h3>
+
+                        <div class="space-y-3 text-xs">
+
+                            <a href="mailto:nirmalendu09maiti@gmail.com"
+                               class="flex items-center space-x-3 text-stone-300 hover:text-[#B8933E] transition-colors">
+                                <i class="fa-regular fa-envelope w-4"></i>
+                                <span>nirmalendu09maiti@gmail.com</span>
+                            </a>
+
+                            <a href="contact.html"
+                               class="flex items-center space-x-3 text-stone-300 hover:text-[#B8933E] transition-colors">
+                                <i class="fa-solid fa-location-dot w-4"></i>
+                                <span>Academic Profile & Contact Information</span>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- COPYRIGHT -->
+                <div class="border-t border-white/15 mt-10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-[10px] text-stone-300">
+                    
+                    <span>
+                        © 2026 Nirmalendu Maiti. All rights reserved. | Visitors: <span id="visitor-count" class="text-[#B8933E] font-semibold">1</span>
+                    </span>
+
+                    <span>
+                        Literature · Ecology · Postcolonial Space
+                    </span>
+
+                </div>
+
+            </div>
+        </footer>
+
+    <script>
+        // ==========================================
+        // VISITOR COUNTER (Local Storage fallback)
+        // ==========================================
+        try {
+            let visits = localStorage.getItem('nirmalendu_site_visits');
+            if (!visits) {
+                visits = 1240; // Starting base number
+            } else {
+                visits = parseInt(visits, 10) + 1;
+            }
+            localStorage.setItem('nirmalendu_site_visits', visits);
+            document.getElementById('visitor-count').textContent = visits.toLocaleString();
+        } catch (e) {
+            document.getElementById('visitor-count').textContent = '1,240';
+        }
+
+        // ==========================================
+        // MOBILE NAVIGATION
+        // ==========================================
+
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileMenuBtn && mobileMenu) {
+
+            mobileMenuBtn.addEventListener('click', function () {
+
+                mobileMenu.classList.toggle('hidden');
+
+                const icon = mobileMenuBtn.querySelector('i');
+
+                if (mobileMenu.classList.contains('hidden')) {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                    mobileMenuBtn.setAttribute(
+                        'aria-label',
+                        'Open navigation menu'
+                    );
+                } else {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-xmark');
+                    mobileMenuBtn.setAttribute(
+                        'aria-label',
+                        'Close navigation menu'
+                    );
+                }
+
+            });
+
+
+            // Close mobile menu after clicking a link
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+
+            mobileLinks.forEach(function (link) {
+
+                link.addEventListener('click', function () {
+
+                    mobileMenu.classList.add('hidden');
+
+                    const icon = mobileMenuBtn.querySelector('i');
+
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+
+                    mobileMenuBtn.setAttribute(
+                        'aria-label',
+                        'Open navigation menu'
+                    );
+
+                });
+
+            });
+
+        }
+
+
+        // ==========================================
+        // CLOSE MOBILE MENU WHEN WINDOW IS RESIZED
+        // ==========================================
+
+        window.addEventListener('resize', function () {
+
+            if (window.innerWidth >= 768 && mobileMenu) {
+
+                mobileMenu.classList.add('hidden');
+
+                if (mobileMenuBtn) {
+
+                    const icon = mobileMenuBtn.querySelector('i');
+
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+
+                    mobileMenuBtn.setAttribute(
+                        'aria-label',
+                        'Open navigation menu'
+                    );
+                }
+
+            }
+
+        });
+    </script>
+
+</body>
+</html>

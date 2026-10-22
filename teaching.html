@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teaching & Pedagogy – Nirmalendu Maiti</title>
+    <meta name="description" content="Teaching portfolio and pedagogical philosophy of Nirmalendu Maiti. Department of English, Mahishadal Raj College.">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        parchment: {
+                            DEFAULT: '#F4F0E8',
+                            light: '#FAF8F4',
+                            dark: '#EAE5DA',
+                            border: '#E2DDD0',
+                        },
+                        forest: {
+                            DEFAULT: '#132219',
+                            hover: '#0C1711',
+                            muted: '#2D3E33',
+                        },
+                        gold: {
+                            DEFAULT: '#B8933E',
+                            muted: '#96762E',
+                            bright: '#C29B38',
+                        },
+                        ink: {
+                            heading: '#1A211C',
+                            text: '#2C3530',
+                            muted: '#5A625C',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #F4F0E8;
+            color: #2C3530;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Large Screen Viewport Framing (1920x1800 scale adaptation) */
+        @media (min-width: 1536px) {
+            .max-w-7xl, .max-w-6xl {
+                max-width: 1500px !important;
+            }
+            .hero-teaching-banner {
+                min-height: 75vh !important;
+            }
+        }
+
+        /* Hero Banner with Fog & Mist Keyframes */
+        .hero-teaching-banner {
+            position: relative;
+            background-image: 
+                linear-gradient(180deg, rgba(12, 20, 15, 0.78) 0%, rgba(19, 34, 25, 0.65) 50%, rgba(15, 26, 19, 0.88) 100%),
+                url('WhatsApp Image 2026-08-05 at 10.43.01 PM.jpeg'),
+                url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center 50%;
+        }
+
+        /* Animated Fog / Mist Layers */
+        .fog-layer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(0deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.04) 40%, transparent 100%);
+            pointer-events: none;
+            mix-blend-mode: overlay;
+            animation: driftFog 25s linear infinite;
+        }
+
+        .fog-layer-2 {
+            position: absolute;
+            bottom: 0;
+            left: -50%;
+            width: 200%;
+            height: 100%;
+            background: radial-gradient(ellipse at bottom, rgba(200,210,205,0.18) 0%, transparent 70%);
+            pointer-events: none;
+            animation: driftFogSlow 35s linear infinite reverse;
+        }
+
+        @keyframes driftFog {
+            0% { transform: translateX(0); }
+            50% { transform: translateX(-25%); }
+            100% { transform: translateX(0); }
+        }
+
+        @keyframes driftFogSlow {
+            0% { transform: translateX(0); }
+            50% { transform: translateX(20%); }
+            100% { transform: translateX(0); }
+        }
+
+        /* Pedagogical Philosophy Section with User Image Background */
+        .philosophy-section-bg {
+            position: relative;
+            background-image: 
+                linear-gradient(135deg, rgba(244, 240, 232, 0.95) 0%, rgba(250, 248, 244, 0.92) 50%, rgba(234, 229, 218, 0.94) 100%),
+                url('WhatsApp Image 2026-08-05 at 10.43.02 PM.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* Course Card Interactive Hover */
+        .course-card {
+            background-color: #FAF8F4;
+            border: 1px solid #E2DDD0;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .course-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 32px -8px rgba(19, 34, 25, 0.12);
+            border-color: #B8933E;
+        }
+
+        /* Toast Popup Animation */
+        .toast-notice {
+            transform: translateY(120%);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .toast-notice.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Filter Tab Active Pill Style */
+        .filter-btn.active {
+            background-color: #132219;
+            color: #FAF8F4;
+            border-color: #B8933E;
+        }
+/* Smooth Page Entry */
+
+body {
+    animation: pageFadeIn 0.5s ease-out;
+}
+
+@keyframes pageFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+    </style>
+</head>
+<body class="selection:bg-gold/30 selection:text-forest">
+
+<!-- HEADER NAVBAR -->
+<header class="w-full absolute top-0 left-0 z-50 pt-8 pb-4 px-8 lg:px-20">
+
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+
+        <!-- Brand Emblem & Title -->
+        <a href="index.html" class="flex items-center space-x-3.5 group">
+
+            <div class="w-9 h-9 rounded-full border border-white/30 flex items-center justify-center text-white/90 group-hover:border-gold transition-colors">
+
+                <svg
+                    class="w-4 h-4 text-gold"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    viewBox="0 0 24 24">
+
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M12 21v-8m0 0C9.5 13 4 10.5 4 6c0 0 3.5 0 8 5m0 2c2.5 0 8-2.5 8-7 0 0-3.5 0-8 5">
+                    </path>
+
+                </svg>
+
+            </div>
+
+
+            <div class="flex flex-col">
+
+                <span class="font-serif text-2xl tracking-wide text-white/95 font-medium group-hover:text-gold transition-colors leading-none">
+
+                    Dr. Nirmalendu Maiti
+
+                </span>
+
+                <span class="text-[8px] sm:text-[9px] tracking-[0.16em] uppercase text-white/60 mt-1 whitespace-nowrap">
+
+                    Mapping Literature, Ecology, and Postcolonial Space
+
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center space-x-8 text-sm font-sans whitespace-nowrap">
+
+            <a
+                href="index.html"
+                class="text-white/80 hover:text-gold transition-colors">
+
+                Home
+
+            </a>
+
+            <a
+                href="about.html"
+                class="text-white/80 hover:text-gold transition-colors">
+
+                About
+
+            </a>
+
+            <a
+                href="research_landscape_page.html"
+                class="text-white/80 hover:text-gold transition-colors">
+
+                Research Landscape
+
+            </a>
+
+            <a
+                href="teaching.html"
+                class="text-white border-b-2 border-gold pb-0.5 font-medium">
+
+                Teaching
+
+            </a>
+
+            <a
+                href="reflections.html"
+                class="text-white/80 hover:text-gold transition-colors">
+
+                Reflections
+
+            </a>
+
+            <a
+                href="cv.html"
+                class="text-white/80 hover:text-gold transition-colors">
+
+                CV
+
+            </a>
+
+            <a
+                href="contact.html"
+                class="text-white/80 hover:text-gold transition-colors">
+
+                Contact
+
+            </a>
+
+        </nav>
+
+
+        <!-- Mobile Drawer Button -->
+        <button
+            id="mobile-menu-btn"
+            class="md:hidden text-white hover:text-gold focus:outline-none p-2">
+
+            <i class="fa-solid fa-bars text-xl"></i>
+
+        </button>
+
+    </div>
+
+
+    <!-- Mobile Navigation Menu -->
+    <div
+        id="mobile-menu"
+        class="hidden md:hidden bg-forest/95 backdrop-blur-md rounded-xl mt-4 p-5 space-y-3 text-sm text-white/90 border border-white/10 shadow-2xl">
+
+        <a
+            href="index.html"
+            class="block hover:text-gold">
+
+            Home
+
+        </a>
+
+        <a
+            href="about.html"
+            class="block hover:text-gold">
+
+            About
+
+        </a>
+
+        <a
+            href="research_landscape_page.html"
+            class="block hover:text-gold">
+
+            Research Landscape
+
+        </a>
+
+        <a
+            href="teaching.html"
+            class="block font-semibold text-gold">
+
+            Teaching
+
+        </a>
+
+        <a
+            href="reflections.html"
+            class="block hover:text-gold">
+
+            Reflections
+
+        </a>
+
+        <a
+            href="cv.html"
+            class="block hover:text-gold">
+
+            CV
+
+        </a>
+
+        <a
+            href="contact.html"
+            class="block hover:text-gold">
+
+            Contact
+
+        </a>
+
+    </div>
+
+</header>
+
+    <main class="w-full">
+
+        <!-- HERO SECTION WITH FOG / MIST EFFECT -->
+        <section class="hero-teaching-banner min-h-[72vh] w-full flex items-center relative pt-36 pb-24 px-8 lg:px-20 overflow-hidden">
+            <!-- Atmospheric Fog & Mist Overlays -->
+            <div class="fog-layer"></div>
+            <div class="fog-layer-2"></div>
+
+            <div class="max-w-7xl mx-auto w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 items-center">
+                <div class="lg:col-span-9 space-y-5">
+
+                    <!-- Decorative SVG Badge -->
+                    <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-forest/70 border border-gold/40 text-gold text-xs tracking-widest uppercase font-mono backdrop-blur-sm">
+                        <svg class="w-3.5 h-3.5 text-gold animate-pulse" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>Mahishadal Raj College · Department of English</span>
+                    </div>
+
+                    <h1 class="font-serif text-5xl sm:text-6xl md:text-7xl text-white font-normal leading-[1.1] tracking-tight">
+                        Teaching & Educational Philosophy
+                    </h1>
+
+                    <div class="w-20 h-[1.5px] bg-gold my-4"></div>
+
+                    <p class="text-stone-200/95 text-base sm:text-lg max-w-2xl leading-relaxed font-light">
+                        Guiding undergraduate and postgraduate scholars through the intersections of literary studies, ecocriticism, postcolonial geography, and spatial humanities.
+                    </p>
+
+                    <div class="pt-4 flex flex-wrap gap-4">
+                        <a href="#courses" class="inline-flex items-center space-x-2 px-6 py-3 rounded-full bg-gold text-forest font-semibold text-xs tracking-wider uppercase hover:bg-gold-bright transition-all duration-300 shadow-xl">
+                            <span>Explore Courses Taught</span>
+                            <i class="fa-solid fa-arrow-down text-xs"></i>
+                        </a>
+                        <a href="#philosophy" class="inline-flex items-center space-x-2 px-6 py-3 rounded-full bg-forest/80 text-stone-100 border border-white/20 font-semibold text-xs tracking-wider uppercase hover:bg-forest transition-all duration-300">
+                            <span>Pedagogical Pillars</span>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 1: PEDAGOGICAL PHILOSOPHY (USING PROVIDED IMAGE BACKGROUND) -->
+        <section id="philosophy" class="philosophy-section-bg py-24 px-6 sm:px-12 lg:px-20 relative overflow-hidden">
+            
+            <!-- Botanical Leaf Watermark Accent -->
+            <div class="absolute -right-12 top-1/2 -translate-y-1/2 w-80 lg:w-96 opacity-10 pointer-events-none select-none">
+                <img src="WhatsApp Image 2026-08-05 at 10.43.02 PM.jpeg" alt="Watercolor Landscape Accent" class="w-full h-auto object-contain rounded-3xl">
+            </div>
+
+            <!-- SVG Leaf / Botanical Line Art Background Ornament -->
+            <div class="absolute left-6 top-12 opacity-15 pointer-events-none hidden md:block">
+                <svg class="w-32 h-32 text-[#B8933E]" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1">
+                    <path d="M50 90 Q30 50 10 30 Q40 40 50 10 Q60 40 90 30 Q70 50 50 90 Z" />
+                    <path d="M50 90 L50 10" stroke-dasharray="2 2" />
+                </svg>
+            </div>
+
+            <div class="flex items-center justify-center space-x-4 max-w-lg mx-auto mb-14">
+                <div class="h-[1px] bg-gradient-to-r from-transparent via-[#B8933E]/50 to-[#B8933E] flex-1"></div>
+                <div class="text-[#B8933E] flex items-center space-x-1">
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                        <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
+                        <path d="M3.88 12.88L2 13.8V17c0 2.21 4.48 4 10 4s10-1.79 10-4v-3.2l-1.88-.92M12 17.5c-3.31 0-6-1.12-6-2.5s2.69-2.5 6-2.5 6 1.12 6 2.5-2.69 2.5-6 2.5z"/>
+                    </svg>
+                </div>
+                <div class="h-[1px] bg-gradient-to-l from-transparent via-[#B8933E]/50 to-[#B8933E] flex-1"></div>
+            </div>
+
+            <div class="max-w-6xl mx-auto space-y-12 relative z-10">
+                <div class="text-center max-w-3xl mx-auto space-y-3">
+                    <span class="text-[11px] font-sans uppercase tracking-[0.25em] text-[#B8933E] font-bold block">
+                        TEACHING VISION
+                    </span>
+                    <h2 class="font-serif text-4xl sm:text-5xl text-[#1A211C] font-normal tracking-tight">
+                        Cultivating Critical & Spatial Consciousness
+                    </h2>
+                    <p class="text-[#5A625C] text-sm leading-relaxed font-light">
+                        My classroom operates as an active forum for inquiry where literary texts are not passive objects of analysis, but dynamic spaces reflecting environmental, historical, and postcolonial realities.
+                    </p>
+                </div>
+
+                <!-- 4 Pedagogical Pillars Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    
+                    <div class="bg-[#FAF8F4]/95 backdrop-blur-sm border border-[#E2DDD0] rounded-2xl p-8 relative overflow-hidden group hover:border-[#B8933E] transition-all duration-300 shadow-md">
+                        <div class="flex items-start space-x-5">
+                            <div class="w-12 h-12 rounded-xl bg-[#132219] text-[#B8933E] flex items-center justify-center flex-shrink-0 text-xl font-serif">
+                                01
+                            </div>
+                            <div class="space-y-2">
+                                <h3 class="font-serif text-2xl text-[#1A211C] font-semibold">
+                                    Ecocritical & Ecological Literacy
+                                </h3>
+                                <p class="text-[#5A625C] text-sm leading-relaxed font-light">
+                                    Encouraging students to read with an ecological lens—examining how representations of land, water, more-than-human world, and climate crisis shape narratives and cultural imagination.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-[#FAF8F4]/95 backdrop-blur-sm border border-[#E2DDD0] rounded-2xl p-8 relative overflow-hidden group hover:border-[#B8933E] transition-all duration-300 shadow-md">
+                        <div class="flex items-start space-x-5">
+                            <div class="w-12 h-12 rounded-xl bg-[#132219] text-[#B8933E] flex items-center justify-center flex-shrink-0 text-xl font-serif">
+                                02
+                            </div>
+                            <div class="space-y-2">
+                                <h3 class="font-serif text-2xl text-[#1A211C] font-semibold">
+                                    Postcolonial & Spatial Perspective
+                                </h3>
+                                <p class="text-[#5A625C] text-sm leading-relaxed font-light">
+                                    Guiding learners to unpack colonial geographies, displacement, and borderlands, fostering a nuanced understanding of power dynamics in global and regional literatures.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-[#FAF8F4]/95 backdrop-blur-sm border border-[#E2DDD0] rounded-2xl p-8 relative overflow-hidden group hover:border-[#B8933E] transition-all duration-300 shadow-md">
+                        <div class="flex items-start space-x-5">
+                            <div class="w-12 h-12 rounded-xl bg-[#132219] text-[#B8933E] flex items-center justify-center flex-shrink-0 text-xl font-serif">
+                                03
+                            </div>
+                            <div class="space-y-2">
+                                <h3 class="font-serif text-2xl text-[#1A211C] font-semibold">
+                                    Contextual Close Reading
+                                </h3>
+                                <p class="text-[#5A625C] text-sm leading-relaxed font-light">
+                                    Balancing rigorous textual and stylistic analysis with historical, cultural, and environmental contextualization, moving beyond surface-level plot summaries.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-[#FAF8F4]/95 backdrop-blur-sm border border-[#E2DDD0] rounded-2xl p-8 relative overflow-hidden group hover:border-[#B8933E] transition-all duration-300 shadow-md">
+                        <div class="flex items-start space-x-5">
+                            <div class="w-12 h-12 rounded-xl bg-[#132219] text-[#B8933E] flex items-center justify-center flex-shrink-0 text-xl font-serif">
+                                04
+                            </div>
+                            <div class="space-y-2">
+                                <h3 class="font-serif text-2xl text-[#1A211C] font-semibold">
+                                    Dialogic & Student-Centered Dialogue
+                                </h3>
+                                <p class="text-[#5A625C] text-sm leading-relaxed font-light">
+                                    Prioritising interactive discussions, seminar presentations, and collaborative workshops that empower students to formulate independent critical arguments.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- BOTANICAL BANNER STRIP -->
+        <section class="py-12 relative overflow-hidden px-6 sm:px-12 lg:px-20 border-y border-[#D8D1BF] shadow-inner" style="background-image: linear-gradient(135deg, rgba(244, 240, 232, 0.92) 0%, rgba(250, 248, 244, 0.88) 50%, rgba(234, 229, 218, 0.92) 100%), url('ChatGPT Image Aug 5, 2026, 11_19_55 PM.png'); background-size: cover; background-position: center;">
+            <!-- Subtle Overlay Accent -->
+            <div class="absolute inset-0 bg-[#F4F0E8]/40 pointer-events-none"></div>
+
+            <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
+                
+                <div class="flex items-center space-x-6">
+                    <!-- College Logo with Creative Styled Frame -->
+                    <div class="relative group">
+                        <div class="absolute -inset-1.5 bg-gradient-to-r from-[#B8933E] to-[#132219] rounded-2xl blur-sm opacity-60 group-hover:opacity-100 transition duration-500"></div>
+                        <div class="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border-2 border-[#B8933E]/50 flex-shrink-0 bg-[#FAF8F4] p-2.5 shadow-xl flex items-center justify-center">
+                            <img src="Logo.png" alt="Mahishadal Raj College Logo" class="max-w-full max-h-full object-contain filter drop-shadow">
+                        </div>
+                    </div>
+
+                    <div class="space-y-1.5">
+                        <div class="inline-flex items-center space-x-2 px-2.5 py-0.5 rounded-full bg-[#132219] text-[#B8933E] text-[10px] font-mono tracking-widest uppercase">
+                            <span class="w-1.5 h-1.5 rounded-full bg-[#B8933E] animate-ping"></span>
+                            <span>Est. 1946</span>
+                        </div>
+                        <h3 class="font-serif text-2xl sm:text-3xl text-[#1A211C] font-semibold tracking-tight">Mahishadal Raj College</h3>
+                        <p class="text-xs text-[#5A625C] font-medium">Affiliated to Vidyasagar University · Undergraduate (UG) & Postgraduate (PG) Department of English</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-8 text-center md:text-right border-t md:border-t-0 md:border-l border-[#D0C7B4]/80 pt-6 md:pt-0 md:pl-10">
+                    <div class="space-y-0.5">
+                        <span class="font-serif text-3xl sm:text-4xl font-bold text-[#132219] block">PG & UG</span>
+                        <p class="text-[11px] text-[#B8933E] font-bold uppercase tracking-wider">Core Programs</p>
+                    </div>
+                    <div class="w-[1px] h-10 bg-[#D0C7B4]/80 hidden sm:block"></div>
+                    <div class="space-y-0.5">
+                        <span class="font-serif text-3xl sm:text-4xl font-bold text-[#132219] block">10+</span>
+                        <p class="text-[11px] text-[#B8933E] font-bold uppercase tracking-wider">Years Excellence</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 2: COURSES OFFERED / DIRECTORY -->
+        <section id="courses" class="py-20 px-6 sm:px-12 lg:px-20 relative bg-[#F4F0E8] overflow-hidden">
+            <!-- Decorative Botanical Corner Illustration -->
+            <div class="absolute left-0 bottom-0 opacity-10 pointer-events-none">
+                <svg class="w-64 h-64 text-[#B8933E]" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M0 200 C100 200, 200 100, 200 0" />
+                    <path d="M0 160 C80 160, 160 80, 160 0" stroke-dasharray="4 4" />
+                </svg>
+            </div>
+
+            <div class="max-w-6xl mx-auto space-y-12 relative z-10">
+                
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+                    <div class="space-y-2">
+                        <span class="text-[11px] font-sans uppercase tracking-[0.25em] text-[#B8933E] font-bold block">
+                            CURRICULUM & SYLLABI
+                        </span>
+                        <h2 class="font-serif text-4xl sm:text-5xl text-[#1A211C] font-normal tracking-tight">
+                            Courses Taught
+                        </h2>
+                    </div>
+
+                    <!-- Interactive Filter Buttons -->
+                    <div class="flex items-center space-x-2 bg-[#E2DDD0]/60 p-1.5 rounded-xl border border-[#D0C7B4]">
+                        <button onclick="filterCourses('all')" class="filter-btn active text-xs font-semibold px-4 py-2 rounded-lg transition-all">All Levels</button>
+                        <button onclick="filterCourses('pg')" class="filter-btn text-xs font-semibold px-4 py-2 text-[#2C3530] hover:text-[#132219] rounded-lg transition-all">Postgraduate (PG)</button>
+                        <button onclick="filterCourses('ug')" class="filter-btn text-xs font-semibold px-4 py-2 text-[#2C3530] hover:text-[#132219] rounded-lg transition-all">Undergraduate (UG)</button>
+                    </div>
+                </div>
+
+                <!-- Course Cards Grid -->
+                <div id="course-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    <!-- Course 1: Indian Knowledge System (PG) -->
+                    <div class="course-card rounded-2xl p-6 flex flex-col justify-between space-y-6" data-level="pg">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#132219] text-[#B8933E]">
+                                    POSTGRADUATE (MA)
+                                </span>
+                                <span class="text-xs font-mono text-[#5A625C]">ENG-PG-IKS</span>
+                            </div>
+
+                            <h3 class="font-serif text-xl text-[#1A211C] font-semibold leading-snug">
+                                Indian Knowledge System
+                            </h3>
+
+                            <p class="text-xs text-[#5A625C] leading-relaxed">
+                                Introducing major Indian philosophical, literary, and aesthetic traditions to examine how knowledge is produced, preserved, interpreted, and transmitted through texts, oral narratives, and cultural practices.
+
+				<p class="text-xs text-[#5A625C] leading-relaxed">
+
+				Exploring Indian literary theories, particularly <em>rasa</em>, <em>dhvani</em>, and <em>alaṅkāra</em>, to understand the relationship between language, literary expression, and aesthetic experience.
+
+				<p class="text-xs text-[#5A625C] leading-relaxed">
+				Examining representations of nature, landscapes, and human–nonhuman relationships in Indian knowledge traditions, with particular attention to ecological ethics, cultural memory, and indigenous understandings of place.
+
+                            </p>
+
+                            <div class="pt-2 border-t border-[#E2DDD0]">
+                                <h4 class="text-[11px] font-semibold text-[#1A211C] uppercase tracking-wider mb-2">Key Writers & Themes</h4>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="text-[10px] px-2 py-0.5 rounded bg-[#EAE5DA] text-[#2C3530]">Indian Aesthetics & Literary Theory</span>
+                                    <span class="text-[10px] px-2 py-0.5 rounded bg-[#EAE5DA] text-[#2C3530]">Philosophy, Ethics & Ways of Knowing</span>
+                                    <span class="text-[10px] px-2 py-0.5 rounded bg-[#EAE5DA] text-[#2C3530]">Nature, Place & Cultural Knowledge</span>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <button onclick="toggleCourseDetails('course-1')" class="w-full py-2.5 px-4 rounded-xl border border-[#B8933E] text-[#132219] hover:bg-[#132219] hover:text-white font-medium text-xs transition-colors flex items-center justify-center space-x-2">
+                                <span>View Module Highlights</span>
+                                <i class="fa-solid fa-chevron-down text-[10px]"></i>
+                            </button>
+                            <div id="course-1" class="hidden mt-3 p-3 bg-[#FAF8F4] border border-[#E2DDD0] rounded-xl text-xs text-[#5A625C] space-y-2">
+                                <p><strong>Modules:</strong> Introduction to Green Studies, Anthropocene Narratives, Island & Coastal Vulnerabilities, Eco-violence & Displacements.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Course 2: Colonialism and Postcolonialism
+(PG) -->
+                    <div class="course-card rounded-2xl p-6 flex flex-col justify-between space-y-6" data-level="pg">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#132219] text-[#B8933E]">
+                                    POSTGRADUATE (MA)
+                                </span>
+                                <span class="text-xs font-mono text-[#5A625C]">ENG DSC 601</span>
+                            </div>
+
+                            <h3 class="font-serif text-xl text-[#1A211C] font-semibold leading-snug">
+                                Homi K. Bhabha: “The Other Question”
+                            </h3>
+
+                            <p class="text-xs text-[#5A625C] leading-relaxed">
+                               Examining Bhabha’s critique of colonial discourse to understand how stereotypes construct and sustain colonial authority through the representation of the colonised as culturally inferior, fixed, and different.
+
+				<p class="text-xs text-[#5A625C] leading-relaxed">
+
+				Exploring the concepts of stereotype, ambivalence, and mimicry to analyse the contradictions within colonial power and the instability of colonial identities.
+
+				<p class="text-xs text-[#5A625C] leading-relaxed">
+				Analysing how representations of cultural difference shape relations of power, identity, and belonging, with particular attention to the ways colonial discourse produces and reinforces the binary between the coloniser and the colonised.
+
+
+                            </p>
+
+                            <div class="pt-2 border-t border-[#E2DDD0]">
+                                <h4 class="text-[11px] font-semibold text-[#1A211C] uppercase tracking-wider mb-2">Key Writers & Themes</h4>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="text-[10px] px-2 py-0.5 rounded bg-[#EAE5DA] text-[#2C3530]">Postcolonial Theory and Colonial Discourse</span>
+                                    <span class="text-[10px] px-2 py-0.5 rounded bg-[#EAE5DA] text-[#2C3530]">Stereotype, Ambivalence, and Mimicry</span>
+                                    <span class="text-[10px] px-2 py-0.5 rounded bg-[#EAE5DA] text-[#2C3530]">Cultural Difference and Identity</span>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <button onclick="toggleCourseDetails('course-2')" class="w-full py-2.5 px-4 rounded-xl border border-[#B8933E] text-[#132219] hover:bg-[#132219] hover:text-white font-medium text-xs transition-colors flex items-center justify-center space-x-2">
+                                <span>View Module Highlights</span>
+                                <i class="fa-solid fa-chevron-down text-[10px]"></i>
+                            </button>
+                            <div id="course-2" class="hidden mt-3 p-3 bg-[#FAF8F4] border border-[#E2DDD0] rounded-xl text-xs text-[#5A625C] space-y-2">
+                                <p><strong>Modules:</strong> Orientalism & Cartography, Decolonising Mind & Space, Subaltern Voices in Tribal Narratives, Diaspora & Belonging.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Course 3: History of English Literature &amp English Language: Restoration Period &amp Eighteenth Century Literature (UG) -->
+                    <div class="course-card rounded-2xl p-6 flex flex-col justify-between space-y-6" data-level="ug">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#2D3E33] text-stone-200">
+                                    UNDERGRADUATE (BA HONS)
+                                </span>
+                                <span class="text-xs font-mono text-[#5A625C]">ENGHMJ-01</span>
+                            </div>
+
+                            <h3 class="font-serif text-xl text-[#1A211C] font-semibold leading-snug">
+                                History of English Literature &amp English Language: Restoration Period &amp Eighteenth Century Literature
+                            </h3>
+
+                            <p class="text-xs text-[#5A625C] leading-relaxed">
+                               Introducing major authors and examining their contributions to the development of English literature.
+				<p class="text-xs text-[#5A625C] leading-relaxed">
+
+				Exploring the relationship between the popularity of urbane literature and the rise of the middle class.
+				<p class="text-xs text-[#5A625C] leading-relaxed">
+
+				Examining how literary representations of nature and material progress reflect changing attitudes towards the natural world during the Industrial Revolution, including the treatment of nature as a resource for mass production and the longer-term ecological and climatic consequences of industrialisation.
+ 
+                            </p>
+
+                            <div class="pt-2 border-t border-[#E2DDD0]">
+                                <h4 class="text-[11px] font-semibold text-[#1A211C] uppercase tracking-wider mb-2">Key Writers & Themes</h4>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="text-[10px] px-2 py-0.5 rounded bg-[#EAE5DA] text-[#2C3530]">John Dryden</span>
+                                    <span class="text-[10px] px-2 py-0.5 rounded bg-[#EAE5DA] text-[#2C3530]">Alexander Pope</span>
+                                    <span class="text-[10px] px-2 py-0.5 rounded bg-[#EAE5DA] text-[#2C3530]">Daniel Defoe</span>
+                                    <span class="text-[10px] px-2 py-0.5 rounded bg-[#EAE5DA] text-[#2C3530]">Dr. Samuel Johnson</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <button onclick="toggleCourseDetails('course-3')" class="w-full py-2.5 px-4 rounded-xl border border-[#B8933E] text-[#132219] hover:bg-[#132219] hover:text-white font-medium text-xs transition-colors flex items-center justify-center space-x-2">
+                                <span>View Module Highlights</span>
+                                <i class="fa-solid fa-chevron-down text-[10px]"></i>
+                            </button>
+                            <div id="course-3" class="hidden mt-3 p-3 bg-[#FAF8F4] border border-[#E2DDD0] rounded-xl text-xs text-[#5A625C] space-y-2">
+                                <p><strong>Modules:</strong> Pre-Independence Novel, Modern Indian Poetry, Regional Consciousness in Translation, Gender and Family Dynamics.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Course 4: British Drama &amp Prose (Renaissance to 18th Century) (UG) -->
+                    <div class="course-card rounded-2xl p-6 flex flex-col justify-between space-y-6" data-level="ug">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#2D3E33] text-stone-200">
+                                    UNDERGRADUATE (BA HONS)
+                                </span>
+                                <span class="text-xs font-mono text-[#5A625C]">ENGHMJ-03</span>
+                            </div>
+
+                            <h3 class="font-serif text-xl text-[#1A211C] font-semibold leading-snug">
+                                Jonathan Swift: <em>Gulliver's Travels</em> (Book 1 &amp 2)
+                            </h3>
+
+                            <p class="text-xs text-[#5A625C] leading-relaxed">
+			Examining Swift’s satire of human exceptionalism, political power, and European claims to civilisation through Gulliver’s encounters with Lilliput and Brobdingnag.
+				<p class="text-xs text-[#5A625C] leading-relaxed">
+
+			Exploring the relationships between humans, animals, bodies, and environments to question anthropocentric assumptions and the boundaries between the human and the nonhuman.
+				<p class="text-xs text-[#5A625C] leading-relaxed">
+
+			Analysing how scale, spatial difference, and encounters with unfamiliar worlds unsettle established hierarchies of power, knowledge, and belonging.   
+				<p class="text-xs text-[#5A625C] leading-relaxed">
+                             
+                            </p>
+
+                            <div class="pt-2 border-t border-[#E2DDD0]">
+                                <h4 class="text-[11px] font-semibold text-[#1A211C] uppercase tracking-wider mb-2">Key Writers & Themes</h4>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="text-[10px] px-2 py-0.5 rounded bg-[#EAE5DA] text-[#2C3530]">Jonathan Swift and Satire</span>
+                                    <span class="text-[10px] px-2 py-0.5 rounded bg-[#EAE5DA] text-[#2C3530]">Human and Nonhuman Worlds</span>
+                                    <span class="text-[10px] px-2 py-0.5 rounded bg-[#EAE5DA] text-[#2C3530]">Space, Scale, and Otherness</span>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <button onclick="toggleCourseDetails('course-4')" class="w-full py-2.5 px-4 rounded-xl border border-[#B8933E] text-[#132219] hover:bg-[#132219] hover:text-white font-medium text-xs transition-colors flex items-center justify-center space-x-2">
+                                <span>View Module Highlights</span>
+                                <i class="fa-solid fa-chevron-down text-[10px]"></i>
+                            </button>
+                            <div id="course-4" class="hidden mt-3 p-3 bg-[#FAF8F4] border border-[#E2DDD0] rounded-xl text-xs text-[#5A625C] space-y-2">
+                                <p><strong>Modules:</strong> Romantic Ecology, Urban Wastelands, Modernist Narrative Techniques, Post-War Literary Shifts.</p>
+                            </div>
+                        </div>
+                    </div>
+
+ <!-- Course 5: Young Adult Literatures 
+ (UG) -->
+                    <div class="course-card rounded-2xl p-6 flex flex-col justify-between space-y-6" data-level="ug">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#2D3E33] text-stone-200">
+                                    UNDERGRADUATE (BA HONS)
+                                </span>
+                                <span class="text-xs font-mono text-[#5A625C]">ENGMJE-03</span>
+                            </div>
+
+                            <h3 class="font-serif text-xl text-[#1A211C] font-semibold leading-snug">
+                                James Joyce: "Araby"
+                            </h3>
+
+                            <p class="text-xs text-[#5A625C] leading-relaxed">
+			Examining Joyce’s use of first-person narration, symbolism, and epiphany to represent the gap between youthful idealism and lived experience.
+				<p class="text-xs text-[#5A625C] leading-relaxed">
+
+			Exploring Dublin as an urban space shaped by religious conventions, social constraints, and the monotony of everyday life.
+				<p class="text-xs text-[#5A625C] leading-relaxed">
+
+			Analysing how desire, disillusionment, and the protagonist’s encounter with the bazaar reveal the influence of cultural and material environments on individual identity and belonging.
+				<p class="text-xs text-[#5A625C] leading-relaxed">
+                             
+                            </p>
+
+                            <div class="pt-2 border-t border-[#E2DDD0]">
+                                <h4 class="text-[11px] font-semibold text-[#1A211C] uppercase tracking-wider mb-2">Key Themes</h4>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="text-[10px] px-2 py-0.5 rounded bg-[#EAE5DA] text-[#2C3530]">Stream of Consciousness</span>
+                                    <span class="text-[10px] px-2 py-0.5 rounded bg-[#EAE5DA] text-[#2C3530]">Epiphany</span>
+                                    <span class="text-[10px] px-2 py-0.5 rounded bg-[#EAE5DA] text-[#2C3530]">Desire and Disillusionment</span>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <button onclick="toggleCourseDetails('course-4')" class="w-full py-2.5 px-4 rounded-xl border border-[#B8933E] text-[#132219] hover:bg-[#132219] hover:text-white font-medium text-xs transition-colors flex items-center justify-center space-x-2">
+                                <span>View Module Highlights</span>
+                                <i class="fa-solid fa-chevron-down text-[10px]"></i>
+                            </button>
+                            <div id="course-5" class="hidden mt-3 p-3 bg-[#FAF8F4] border border-[#E2DDD0] rounded-xl text-xs text-[#5A625C] space-y-2">
+                                <p><strong>Modules:</strong> Young Adult Literatures.</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Course 6: Postcolonial Ecocriticism (PG Special Tutorial Class) -->
+                    <div class="course-card rounded-2xl p-6 flex flex-col justify-between space-y-6" data-level="pg">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#132219] text-[#B8933E]">
+                                    SPECIAL TUTORIAL (MA)
+                                </span>
+                                <span class="text-xs font-mono text-[#5A625C]">ENG-PG-Special Tutorial</span>
+                            </div>
+
+                            <h3 class="font-serif text-xl text-[#1A211C] font-semibold leading-snug">
+                                Postcolonial Ecocriticism
+                            </h3>
+
+                            <p class="text-xs text-[#5A625C] leading-relaxed">
+                                Introducing postcolonial ecocriticism as an interdisciplinary approach that examines the intersections of colonialism, environmental exploitation, and the unequal distribution of ecological resources and risks.
+
+				<p class="text-xs text-[#5A625C] leading-relaxed">
+
+				Exploring how colonial histories, capitalist development, and anthropocentric worldviews shape representations of landscapes, indigenous communities, and human–nonhuman relationships in literary texts.
+
+				<p class="text-xs text-[#5A625C] leading-relaxed">
+
+				Analysing how literature exposes environmental injustice, displacement, and competing claims to land and belonging while foregrounding indigenous knowledge, ecological resistance, and alternative ways of imagining human–nature relationships.
+                            </p>
+
+                            <div class="pt-2 border-t border-[#E2DDD0]">
+                                <h4 class="text-[11px] font-semibold text-[#1A211C] uppercase tracking-wider mb-2">Key Focus Areas</h4>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="text-[10px] px-2 py-0.5 rounded bg-[#EAE5DA] text-[#2C3530]">Elizabeth DeLoughrey, Graham Huggan, Helen Tiffin, and Rob Nixon</span>
+                                    <span class="text-[10px] px-2 py-0.5 rounded bg-[#EAE5DA] text-[#2C3530]">Colonialism, Landscape, and Displacement</span>
+                                    <span class="text-[10px] px-2 py-0.5 rounded bg-[#EAE5DA] text-[#2C3530]">Indigenous Knowledge and More-than-Human Worlds</span>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <button onclick="toggleCourseDetails('course-6')" class="w-full py-2.5 px-4 rounded-xl border border-[#B8933E] text-[#132219] hover:bg-[#132219] hover:text-white font-medium text-xs transition-colors flex items-center justify-center space-x-2">
+                                <span>View Module Highlights</span>
+                                <i class="fa-solid fa-chevron-down text-[10px]"></i>
+                            </button>
+                            <div id="course-6" class="hidden mt-3 p-3 bg-[#FAF8F4] border border-[#E2DDD0] rounded-xl text-xs text-[#5A625C] space-y-2">
+                                <p><strong>Modules:</strong> Postcolonial Ecocriticism</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 3: MENTORSHIP & PEDAGOGICAL INITIATIVES -->
+        <section class="py-20 px-6 sm:px-12 lg:px-20 bg-[#FAF8F4] border-t border-[#E2DDD0]">
+            <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-6 space-y-6">
+                    <span class="text-[11px] font-sans uppercase tracking-[0.25em] text-[#B8933E] font-bold block">
+                        STUDENT MENTORSHIP
+                    </span>
+                    
+                    <h2 class="font-serif text-3xl sm:text-4xl text-[#1A211C] font-normal leading-tight">
+                        Skill Enhancement Courses
+                    </h2>
+
+                    <p class="text-[#5A625C] text-sm leading-relaxed font-light">
+                        Beyond the regular lecture hours, I actively guide the undergraduate students in various papers on the Skill Enhancement Course (SEC).  
+                    </p>
+
+                    <div class="space-y-4 pt-2">
+                        <div class="flex items-start space-x-3.5">
+                            <i class="fa-solid fa-check text-[#B8933E] mt-1 text-xs"></i>
+                            <div class="text-xs text-[#2C3530]">
+                                <strong>SEC 1: Soft Skills:</strong> Guiding the first semester students of English Honours course on Personality Development, Emotional Intelligence, Leadership &amp Team Building, and Problem Solving.
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-3.5">
+                            <i class="fa-solid fa-check text-[#B8933E] mt-1 text-xs"></i>
+                            <div class="text-xs text-[#2C3530]">
+                                <strong>SEC 2: Basic Phonetics:</strong> Guiding the second semester students of English Honours course on Air-Stream Mechanism, Vowel &amp Consonant Sounds, Syllable, Word Accent, Rhythm, and Intonation.
+
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-3.5">
+                            <i class="fa-solid fa-check text-[#B8933E] mt-1 text-xs"></i>
+                            <div class="text-xs text-[#2C3530]">
+                                <strong>SEC 3: Creative Writing:</strong> Guiding the third semester students of English Honours course on the Art and Craft of Writing, Creative Writings on Poetry, Fiction, &amp Drama. 
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-6 bg-[#E6E0D3]/80 p-8 rounded-2xl border border-[#D0C7B4] space-y-6">
+                    <div class="flex items-center space-x-3 text-[#132219]">
+                        <i class="fa-solid fa-quote-left text-2xl text-[#B8933E]"></i>
+                        <h3 class="font-serif text-2xl font-semibold">Pedagogical Philosophy Statement</h3>
+                    </div>
+
+                    <p class="font-serif italic text-[#1A211C] text-base leading-relaxed">
+                        “Teaching literature in today's world requires us to bridge the textual with the terrestrial. When students learn to recognise the environmental and postcolonial geographies embedded in stories, they transform from passive readers into conscious stewards of culture and ecology.”
+                    </p>
+
+                    <div class="pt-4 border-t border-[#D0C7B4]/80 flex items-center justify-between text-xs">
+                        <span class="font-semibold text-[#132219]">Nirmalendu Maiti</span>
+                        <span class="text-[#5A625C] italic">Dept. of English, Mahishadal Raj College</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+   <!-- FOOTER -->
+        <footer class="bg-[#0C1711] text-stone-200 px-6 sm:px-12 lg:px-20 py-12">
+            
+            <div class="max-w-7xl mx-auto">
+
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8">
+
+                    <!-- FOOTER BRAND -->
+                    <div class="md:col-span-5">
+                        
+                        <a href="index.html"
+                           class="inline-flex items-center space-x-3 group">
+                            
+                            <div class="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center group-hover:border-[#B8933E] transition-colors">
+                                <svg class="w-4 h-4 text-[#B8933E]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8m0 0C9.5 13 4 10.5 4 6c0 0 3.5 0 8 5m0 2c2.5 0 8-2.5 8-7 0 0-3.5 0-8 5"></path>
+                                </svg>
+                            </div>
+
+                            <span class="font-serif text-2xl text-white group-hover:text-[#B8933E] transition-colors">
+                                Dr. Nirmalendu Maiti
+                            </span>
+
+                        </a>
+
+                        <p class="text-xs text-stone-300 leading-relaxed max-w-sm mt-5">
+                            Mapping literature, ecology, and postcolonial space through interdisciplinary research, teaching, and critical inquiry.
+                        </p>
+
+                    </div>
+
+
+                    <!-- FOOTER NAVIGATION -->
+                    <div class="md:col-span-3">
+                        
+                        <h3 class="text-[10px] uppercase tracking-[0.2em] text-[#B8933E] font-semibold mb-5">
+                            Navigate
+                        </h3>
+
+                        <div class="grid grid-cols-2 gap-y-3 gap-x-5 text-xs">
+
+                            <a href="index.html"
+                               class="text-stone-300 hover:text-[#B8933E] transition-colors">
+                                Home
+                            </a>
+
+                            <a href="about.html"
+                               class="text-stone-300 hover:text-[#B8933E] transition-colors">
+                                About
+                            </a>
+
+                            <a href="research_landscape_page.html"
+                               class="text-stone-300 hover:text-[#B8933E] transition-colors">
+                                Research
+                            </a>
+
+                            <a href="teaching.html"
+                               class="text-stone-300 hover:text-[#B8933E] transition-colors">
+                                Teaching
+                            </a>
+
+                            <a href="reflections.html"
+                               class="text-stone-300 hover:text-[#B8933E] transition-colors">
+                                Reflections
+                            </a>
+
+                            <a href="cv.html"
+                               class="text-stone-300 hover:text-[#B8933E] transition-colors">
+                                CV
+                            </a>
+
+                            <a href="contact.html"
+                               class="text-stone-300 hover:text-[#B8933E] transition-colors">
+                                Contact
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- FOOTER CONTACT -->
+                    <div class="md:col-span-4">
+                        
+                        <h3 class="text-[10px] uppercase tracking-[0.2em] text-[#B8933E] font-semibold mb-5">
+                            Contact
+                        </h3>
+
+                        <div class="space-y-3 text-xs">
+
+                            <a href="mailto:nirmalendu09maiti@gmail.com"
+                               class="flex items-center space-x-3 text-stone-300 hover:text-[#B8933E] transition-colors">
+                                <i class="fa-regular fa-envelope w-4"></i>
+                                <span>nirmalendu09maiti@gmail.com</span>
+                            </a>
+
+                            <a href="contact.html"
+                               class="flex items-center space-x-3 text-stone-300 hover:text-[#B8933E] transition-colors">
+                                <i class="fa-solid fa-location-dot w-4"></i>
+                                <span>Academic Profile & Contact Information</span>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- COPYRIGHT -->
+                <div class="border-t border-white/15 mt-10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-[10px] text-stone-300">
+                    
+                    <span>
+                        © 2026 Nirmalendu Maiti. All rights reserved. | Visitors: <span id="visitor-count" class="text-[#B8933E] font-semibold">1</span>
+                    </span>
+
+                    <span>
+                        Literature · Ecology · Postcolonial Space
+                    </span>
+
+                </div>
+
+            </div>
+        </footer>
+
+    <script>
+        // ==========================================
+        // VISITOR COUNTER (Local Storage fallback)
+        // ==========================================
+        try {
+            let visits = localStorage.getItem('nirmalendu_site_visits');
+            if (!visits) {
+                visits = 1240; // Starting base number
+            } else {
+                visits = parseInt(visits, 10) + 1;
+            }
+            localStorage.setItem('nirmalendu_site_visits', visits);
+            document.getElementById('visitor-count').textContent = visits.toLocaleString();
+        } catch (e) {
+            document.getElementById('visitor-count').textContent = '1,240';
+        }
+
+        // ==========================================
+        // MOBILE NAVIGATION
+        // ==========================================
+
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileMenuBtn && mobileMenu) {
+
+            mobileMenuBtn.addEventListener('click', function () {
+
+                mobileMenu.classList.toggle('hidden');
+
+                const icon = mobileMenuBtn.querySelector('i');
+
+                if (mobileMenu.classList.contains('hidden')) {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                    mobileMenuBtn.setAttribute(
+                        'aria-label',
+                        'Open navigation menu'
+                    );
+                } else {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-xmark');
+                    mobileMenuBtn.setAttribute(
+                        'aria-label',
+                        'Close navigation menu'
+                    );
+                }
+
+            });
+
+
+            // Close mobile menu after clicking a link
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+
+            mobileLinks.forEach(function (link) {
+
+                link.addEventListener('click', function () {
+
+                    mobileMenu.classList.add('hidden');
+
+                    const icon = mobileMenuBtn.querySelector('i');
+
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+
+                    mobileMenuBtn.setAttribute(
+                        'aria-label',
+                        'Open navigation menu'
+                    );
+
+                });
+
+            });
+
+        }
+
+
+        // ==========================================
+        // CLOSE MOBILE MENU WHEN WINDOW IS RESIZED
+        // ==========================================
+
+        window.addEventListener('resize', function () {
+
+            if (window.innerWidth >= 768 && mobileMenu) {
+
+                mobileMenu.classList.add('hidden');
+
+                if (mobileMenuBtn) {
+
+                    const icon = mobileMenuBtn.querySelector('i');
+
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+
+                    mobileMenuBtn.setAttribute(
+                        'aria-label',
+                        'Open navigation menu'
+                    );
+                }
+
+            }
+
+        });
+    </script>
+
+</body>
+</html>
